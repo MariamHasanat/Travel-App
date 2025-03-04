@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Application</title>
 </head>
+
 <body>
-    Hello World
+    <div class="greetings-card container">
+        <div>
+            <h1>Welcome to <img src="assets/logo.svg" alt="logo" loading="lazy"></h1>
+            <h2>Your Next Adventure Begins Now!</h2>
+            <p>Smarter Trips, Better Journeys.</p>
+        </div>
+        <button class="button-next">Next</button>
+    </div>
+    <div class="add-new-trip-card container">
+        <h1>Add New Trip</h1>
+        <form action="submit">
+
+            <input type="text" placeholder="Enter Your Destination">
+
+            <input type="text" id="dateInput" placeholder="When are you leaving?" onfocus="(this.type='date')"
+                onblur="if(!this.value) this.type='text'">
+
+            <input type="text" id="dateInput" placeholder="When are you coming back?" onfocus="(this.type='date')"
+                onblur="if(!this.value) this.type='text'">
+
+            <div class="button-group flex-direction-row">
+                <button class="button-next">Add Trip</button>
+                <button class="button-next">Cancel</button>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>
