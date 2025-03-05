@@ -6,6 +6,8 @@ const axios = require('axios');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+// Initialize the main project folder
 app.use(express.static('../dist'));
 
 const port = 3000;
@@ -21,18 +23,16 @@ const GEONAMES_USERNAME = 'mariam_hasanat';
 // Geonames API - Get location details
 app.get('/geonames', async (req, res) => {
     const { city } = req.query;
+    if (!city) return res.status(400).json({ error: 'City is required' });
+    
+    const url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${GEONAMES_USERNAME}`;
     try {
-        const response = await axios.get(`http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${GEONAMES_USERNAME}`);
-        const { geonames } = response.data;
-        if (geonames.length > 0) {
-            res.json({
-                lat: geonames[0].lat,
-                lng: geonames[0].lng,
-                country: geonames[0].countryName
-            });
-        } else {
-            res.status(404).json({ error: 'City not found' });
+        const response = await axios.get(url);
+        if (response.data.geonames.length === 0) {
+            return res.status(404).json({ error: 'City not found' });
         }
+        const { lat, lng, countryName } = response.data.geonames[0];
+        res.json({ lat, lng, country: countryName });
     } catch (error) {
         res.status(500).json({ error: 'Error fetching data from Geonames API' });
     }
@@ -41,8 +41,11 @@ app.get('/geonames', async (req, res) => {
 // Weatherbit API - Get weather details
 app.get('/weather', async (req, res) => {
     const { lat, lng } = req.query;
+    if (!lat || !lng) return res.status(400).json({ error: 'Latitude and longitude are required' });
+    
+    const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lng}&key=${WEATHERBIT_KEY}&days=7`;
     try {
-        const response = await axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lng}&key=${WEATHERBIT_API_KEY}`);
+        const response = await axios.get(url);
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: 'Error fetching data from Weatherbit API' });
