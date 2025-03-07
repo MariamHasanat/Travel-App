@@ -18,24 +18,33 @@
     </div>
     <div class="add-new-trip-card container">
         <h1>Add New Trip</h1>
-        <form action="submit">
-
+        <form action="submit" method="post" onsubmit="return Client.submitTripHandler(event)">
             <input type="text" placeholder="Enter Your Destination">
-
             <input type="text" id="dateInput" placeholder="When are you leaving?" onfocus="(this.type='date')"
                 onblur="if(!this.value) this.type='text'">
-
             <input type="text" id="dateInput" placeholder="When are you coming back?" onfocus="(this.type='date')"
                 onblur="if(!this.value) this.type='text'">
-
             <div class="button-group flex-direction-row">
-                <button class="button-next">Add Trip</button>
+                <button class="button-next" onclick="return Client.submitTripHandler(event)"
+                    onsubmit="return submitTripHandler(event)">Add Trip</button>
                 <button class="button-next">Cancel</button>
             </div>
         </form>
     </div>
 
     <div id="result"></div>
+
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(reg => console.log('Service Worker registered:', reg))
+                    .catch(err => console.error('Service Worker registration failed:', err));
+            });
+        }
+    </script>
 </body>
 
 </html>

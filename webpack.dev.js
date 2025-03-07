@@ -55,10 +55,10 @@ module.exports = {
             protectWebpackAssets: false
         }),
     ],
-
     devServer: {
         port: 6060,
         allowedHosts: 'all',
         historyApiFallback: true,
+        static: path.resolve(__dirname, 'dist'),
     }
 }

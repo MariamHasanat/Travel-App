@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
+
 module.exports = {
     entry: './client/index.js',
     mode: 'production',
@@ -62,6 +63,8 @@ module.exports = {
     ],
     devServer: {
         port: 6060,
-        allowedHosts: 'all'
+        allowedHosts: 'all',
+        historyApiFallback: true,
+        static: path.resolve(__dirname, 'dist'),
     }
 }

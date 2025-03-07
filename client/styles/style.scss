@@ -47,7 +47,7 @@ body {
     line-height: 40px; // 316.667%
 
     display: flex;
-    padding: 0px 36px;
+    padding: 16px 36px;
     justify-content: center;
     align-items: center;
 
@@ -56,13 +56,13 @@ body {
     background: $button-color;
 
     transition: transform 0.3s ease-in-out;
+    line-height: 10px;
 
     &:hover {
         transform: scale(1.05);
         background-color: $button-hover;
     }
 }
-
 
 .container {
     display: flex;
@@ -90,7 +90,6 @@ body {
     width: 100%;
     gap: 1rem;
 }
-
 
 .image-container {
     flex: 1;
