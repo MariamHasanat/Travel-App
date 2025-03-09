@@ -6,7 +6,7 @@ function submitTripHandler(event) {
     const tripDuration = calculateTripDuration(departureDate, returnDate);
     const trip = { city, date: departureDate, duration: tripDuration };
     console.log(trip);
-    Client.postTrip('http://localhost:8081/getData', trip);
+    postTrip('http://localhost:8081/getData', trip);
 }
 
 function calculateTripDuration(departureDate, returnDate) {
