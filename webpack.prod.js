@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -60,11 +61,14 @@ module.exports = {
                 },
             }],
         }),
+        new CopyWebpackPlugin({
+            patterns: [{ from: './service-worker.js', to: 'dist/' }],
+        }),
     ],
     devServer: {
-        port: 6060,
+        port: 6061,
         allowedHosts: 'all',
         historyApiFallback: true,
-        static: path.resolve(__dirname, 'dist'),
+        static: 'dist',
     }
 }

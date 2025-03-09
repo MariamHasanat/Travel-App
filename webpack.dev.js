@@ -31,7 +31,7 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'assets/[name][ext]' 
+                    filename: 'assets/[name][ext]'
                 }
             },
             {
@@ -54,11 +54,32 @@ module.exports = {
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
         }),
+        new CopyWebpackPlugin({
+            patterns: [{ from: './service-worker.js', to: 'dist/' }],
+        }),
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true,
+            runtimeCaching: [{
+                urlPattern: /\/api\/.*$/,
+                handler: 'NetworkFirst'
+            }, {
+                urlPattern: /\.(?:css|js|html|png|jpg|jpeg|svg)$/,
+                handler: 'CacheFirst',
+                options: {
+                    cacheName: 'assets-cache',
+                    expiration: {
+                        maxEntries: 50,
+                        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+                    },
+                },
+            }],
+        }),
     ],
     devServer: {
-        port: 6060,
+        port: 6061,
         allowedHosts: 'all',
         historyApiFallback: true,
-        static: path.resolve(__dirname, 'dist'),
+        static: 'dist',
     }
 }
