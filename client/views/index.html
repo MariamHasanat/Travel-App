@@ -132,6 +132,10 @@
         }
 
         @media screen and (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+
             .container {
                 flex-direction: column;
                 text-align: center;
@@ -182,42 +186,55 @@
             display: none;
         }
 
-      /* التنسيق العام للكارد */
-      #result {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://pixabay.com/get/gc9a6a17799ca82956d586cfbe4a66a1b6d6a0af738cf70939290994a1822ca26aa15ee8ecd178efe7ab4d4d66ca1aa31d9448b44f4f7b1e8b58845dca5c3ba09_640.jpg);
+        /* التنسيق العام للكارد */
+        #result {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://pixabay.com/get/g4f6eb1f023e7b1922c4fcbdc156533c47ab3db538d1c596703543d1c39748ec9bbbdfc7c248043e609ebeff4a6da4f1f97ada77949c1fb6675b65c8084dd3134_640.jpg);
             background-size: cover;
             background-position: center;
             color: white;
             padding: 20px;
-            width: 90%; /* عرض نسبي */
-            max-width: 400px; /* أقصى عرض للكارد */
-            height: 300px; /* ارتفاع ثابت */
+            width: 90%;
+            /* عرض نسبي */
+            max-width: 332px;
+            /* أقصى عرض للكارد */
+            height: 300px;
+            /* ارتفاع ثابت */
             border-radius: 32px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* توزيع العناصر بشكل متساوٍ */
-            position: relative; /* لتحديد موقع الأزرار */
-            margin: 0 auto; /* توسيط الكارد */
+            justify-content: space-between;
+            /* توزيع العناصر بشكل متساوٍ */
+            position: relative;
+            /* لتحديد موقع الأزرار */
+            margin: 0 auto;
+            /* توسيط الكارد */
         }
 
         /* تنسيق النصوص */
         #result h3,
         #result p {
-            font-size: 1.2rem; /* حجم الخط نسبي */
+            font-size: 1.2rem;
+            /* حجم الخط نسبي */
             line-height: 1.5;
             font-weight: 400;
             color: #FFF;
-            margin: 0.5rem 0; /* مسافة بين النصوص */
+            margin: 0.5rem 0;
+            /* مسافة بين النصوص */
         }
 
         /* تنسيق الأزرار */
         #result .buttons {
             display: flex;
-            justify-content: flex-end; /* محاذاة الأزرار لليمين */
-            gap: 10px; /* مسافة بين الأزرار */
-            position: absolute; /* تثبيت الأزرار في الأسفل */
-            bottom: 20px; /* المسافة من الأسفل */
-            right: 20px; /* المسافة من اليمين */
+            justify-content: flex-end;
+            /* محاذاة الأزرار لليمين */
+            gap: 10px;
+            /* مسافة بين الأزرار */
+            position: absolute;
+            /* تثبيت الأزرار في الأسفل */
+            bottom: 20px;
+            /* المسافة من الأسفل */
+            right: 20px;
+            /* المسافة من اليمين */
         }
 
         #result button {
@@ -231,15 +248,18 @@
             height: 32px;
         }
 
-       
+
         @media (max-width: 768px) {
             #result {
-                height: 250px; /* تقليل الارتفاع في الشاشات الصغيرة */
+                height: 250px;
+                /* تقليل الارتفاع في الشاشات الصغيرة */
+                max-width: 250px;
             }
 
             #result h3,
             #result p {
-                font-size: 1rem; /* تقليل حجم الخط في الشاشات الصغيرة */
+                font-size: 1rem;
+                /* تقليل حجم الخط في الشاشات الصغيرة */
             }
         }
     </style>
@@ -269,7 +289,6 @@
             </div>
         </form>
     </div>
-
     <div id="result">
         <div>
             <h3>Paris, France</h3>
