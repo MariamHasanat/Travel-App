@@ -1,16 +1,22 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WorkboxPlugin = require('workbox-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-
+const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
     entry: './client/index.js',
+    devtool: 'source-map',
     mode: 'production',
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin()],
+    },
     output: {
         libraryTarget: 'var',
-        library: 'Client'
+        library: 'Client',
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.js'
     },
     module: {
         rules: [
@@ -21,7 +27,8 @@ module.exports = {
                     loader: "babel-loader",
                     options: {
                         presets: ["@babel/preset-env"],
-                        sourceType: "unambiguous", // fix for async/await
+                        plugins: ["@babel/plugin-transform-runtime"],
+                        sourceType: "unambiguous",
                     }
                 }
             },
@@ -29,7 +36,7 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'assets/[name][ext]'
+                    filename: 'assets/[name][ext]',
                 }
             },
             {
@@ -39,6 +46,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new CompressionPlugin({
+            algorithm: 'gzip',
+            test: /\.(js|css|html|svg)$/,
+            threshold: 10240,
+            minRatio: 0.8,
+        }),
         new HtmlWebPackPlugin({
             template: "./client/views/index.html",
             filename: "./index.html",
@@ -46,6 +59,7 @@ module.exports = {
         new WorkboxPlugin.GenerateSW({
             clientsClaim: true,
             skipWaiting: true,
+            cleanupOutdatedCaches: true,
             runtimeCaching: [{
                 urlPattern: /\/api\/.*$/,
                 handler: 'NetworkFirst'
@@ -56,19 +70,10 @@ module.exports = {
                     cacheName: 'assets-cache',
                     expiration: {
                         maxEntries: 50,
-                        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+                        maxAgeSeconds: 30 * 24 * 60 * 60,
                     },
                 },
             }],
         }),
-        new CopyWebpackPlugin({
-            patterns: [{ from: './service-worker.js', to: 'dist/' }],
-        }),
     ],
-    devServer: {
-        port: 6061,
-        allowedHosts: 'all',
-        historyApiFallback: true,
-        static: 'dist',
-    }
-}
+};
