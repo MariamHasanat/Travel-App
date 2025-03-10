@@ -5,6 +5,7 @@ function submitTripHandler(event) {
     const returnDate = document.querySelectorAll("#dateInput")[1].value;
     const tripDuration = calculateTripDuration(departureDate, returnDate);
     const trip = { city, date: departureDate, duration: tripDuration };
+    
     console.log(trip);
     postTrip('http://localhost:8081/getData', trip);
 }
@@ -12,8 +13,7 @@ function submitTripHandler(event) {
 function calculateTripDuration(departureDate, returnDate) {
     const departure = new Date(departureDate);
     const returnD = new Date(returnDate);
-    const duration = returnD - departure;
-    return duration;
+    return returnD - departure;
 }
 
 function postTrip(url, trip) {
@@ -22,17 +22,35 @@ function postTrip(url, trip) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(trip)
     })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            updateUI(data);
-        })
-        .catch(error => console.log(error));
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        saveToLocalStorage(data);
+        updateUI();
+    })
+    .catch(error => console.log(error));
 }
 
-function updateUI(data) {
+function saveToLocalStorage(data) {
+    localStorage.setItem('tripData', JSON.stringify(data));
+}
+
+function updateUI() {
+    const storedData = localStorage.getItem('tripData');
+    const emptyState = document.querySelector('.empty');
+    const resultContainer = document.getElementById('result');
+
+    if (!storedData) {
+        emptyState.style.display = 'block';
+        resultContainer.style.display = 'none';
+        return;
+    }
+
+    const data = JSON.parse(storedData);
     if (data.error) return alert(data.error);
-    document.getElementById('result').innerHTML = `
+
+    emptyState.style.display = 'none'; // إخفاء حالة عدم وجود بيانات
+    resultContainer.innerHTML = `
         <h3>${data.city}, ${data.country}</h3>
         <p>Weather: ${data.forecast.weather.description}</p>
         <img src="${data.imageUrl}" alt="City Image">
@@ -40,4 +58,7 @@ function updateUI(data) {
     `;
 }
 
-export { submitTripHandler }; 
+// استدعاء التحديث عند تحميل الصفحة لضمان تحديث الواجهة إذا كان هناك بيانات محفوظة
+document.addEventListener("DOMContentLoaded", updateUI);
+
+export { submitTripHandler };
