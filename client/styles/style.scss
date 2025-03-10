@@ -11,14 +11,18 @@ $button-hover: #1d99b8;
 $text-button: #FFF;
 $border-button: #8ECAE6;
 $cards-bg: rgba(255, 255, 255, 0.9);
+$number-5: 5px;
+$number-10: 10px;
+$number-12: 12px;
 $number-16: 16px;
 $number-20: 20px;
 $number-24: 24px;
+$number-25: 25px;
 $number-32: 32px;
+$number-36: 36px;
 $number-40: 40px;
 $number-48: 48px;
-
-
+$number-50: 50px;
 
 body {
     background: {
@@ -44,14 +48,14 @@ body {
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 40px; // 316.667%
+    line-height: $number-40;
 
     display: flex;
-    padding: 16px 36px;
+    padding: $number-16 $number-36;
     justify-content: center;
     align-items: center;
 
-    border-radius: 32px;
+    border-radius: $number-32;
     border: 1px solid $border-button;
     background: $button-color;
 
@@ -70,10 +74,10 @@ body {
     align-items: flex-start;
     justify-content: center;
     max-width: 90%;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    background-color: $cards-bg;
+    border-radius: $number-20;
+    box-shadow: 0px 5px 15px rgba($black, 0.1);
+    margin: $number-20;
     text-align: left;
     color: $text-color;
     width: 50vw;
@@ -91,118 +95,99 @@ body {
     gap: 1rem;
 }
 
-.image-container {
-    flex: 1;
-    text-align: center;
-}
-
-.image {
-    max-width: 100%;
-    height: auto;
-}
-
-.text-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-left: 50px;
-}
-
-.subtitle {
-    color: $text-color;
-    font-size: 32px;
-    font-weight: normal;
-    margin-top: 10px;
-}
-
-.description {
-    color: $text-color;
-    font-size: 20px;
-    font-weight: normal;
-    margin-top: 10px;
-    line-height: 1.6;
-    max-width: 500px;
-}
-
-.start-button {
-    background-color: $button-color;
-    color: $text-color;
-    border-radius: 48px;
-    height: 70px;
-    width: 300px;
-    font-size: 24px;
-    letter-spacing: 2px;
-    font-weight: normal;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-
-    &:hover {
-        background-color: $button-hover;
-        transform: translateY(-5px);
-    }
-
-    &:active {
-        transform: translateY(2px);
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .image-container {
-        margin-bottom: 20px;
-    }
-
-    .text-container {
-        padding-left: 0;
-    }
-}
-
-// ----------------------------------------------- 
-
 
 h1 {
-    font-size: 32px;
+    font-size: $number-32;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: $number-10;
 }
 
 p {
-    font-size: 20px;
+    font-size: $number-20;
     color: $text-sec-color;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: $number-5;
 }
 
 input {
     width: 100%;
-    padding: 12px;
+    padding: $number-12;
     box-sizing: border-box;
-    margin: 10px 0;
-    padding-left: 25px;
+    margin: $number-10 0;
+    padding-left: $number-25;
     border: 1px solid #E0E0E0;
-    border-radius: 48px;
-    font-size: 16px;
+    border-radius: $number-48;
+    font-size: $number-16;
 }
-
 
 .disabled {
     pointer-events: none;
     opacity: 0.5;
 }
 
-.display-0{
+.display-0 {
     display: none;
+}
+
+// Card of Trip Design
+
+#result {
+    background-image: linear-gradient(rgba($black, 0.5), rgba($black, 0.5)), url(https://pixabay.com/get/g4f6eb1f023e7b1922c4fcbdc156533c47ab3db538d1c596703543d1c39748ec9bbbdfc7c248043e609ebeff4a6da4f1f97ada77949c1fb6675b65c8084dd3134_640.jpg);
+    background-size: cover;
+    background-position: center;
+    color: $white;
+    padding: $number-20;
+    width: 90%;
+    max-width: 332px;
+    height: 250px;
+    border-radius: $number-32;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+}
+
+#result h3,
+#result p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: $white;
+    margin: 0.5rem 0;
+}
+
+#result .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: $number-10;
+    position: absolute;
+    bottom: $number-20;
+    right: $number-20;
+}
+
+#result button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#result button svg {
+    width: $number-32;
+    height: $number-32;
+}
+
+@media (max-width: 768px) {
+    #result {
+        height: 250px;
+        max-width: 250px;
+    }
+
+    #result h3,
+    #result p {
+        font-size: 1rem;
+    }
 }
