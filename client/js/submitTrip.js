@@ -5,7 +5,7 @@ function submitTripHandler(event) {
     const returnDate = document.querySelectorAll("#dateInput")[1].value;
     const tripDuration = calculateTripDuration(departureDate, returnDate);
     const trip = { city, date: departureDate, duration: tripDuration };
-    
+
     console.log(trip);
     postTrip('http://localhost:8081/getData', trip);
 }
@@ -22,43 +22,25 @@ function postTrip(url, trip) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(trip)
     })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        saveToLocalStorage(data);
-        updateUI();
-    })
-    .catch(error => console.log(error));
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            saveToLocalStorage(data);
+            Client.updateUI();
+        })
+        .catch(error => console.log(error));
 }
 
-function saveToLocalStorage(data) {
-    localStorage.setItem('tripData', JSON.stringify(data));
-}
+function saveToLocalStorage(newData) {
+    let existingData = JSON.parse(localStorage.getItem('tripData')) || [];
 
-function updateUI() {
-    const storedData = localStorage.getItem('tripData');
-    const emptyState = document.querySelector('.empty');
-    const resultContainer = document.getElementById('result');
-
-    if (!storedData) {
-        emptyState.style.display = 'block';
-        resultContainer.style.display = 'none';
-        return;
+    if (!Array.isArray(existingData)) {
+        existingData = [];
     }
 
-    const data = JSON.parse(storedData);
-    if (data.error) return alert(data.error);
+    existingData = [...existingData, newData];
 
-    emptyState.style.display = 'none'; // إخفاء حالة عدم وجود بيانات
-    resultContainer.innerHTML = `
-        <h3>${data.city}, ${data.country}</h3>
-        <p>Weather: ${data.forecast.weather.description}</p>
-        <img src="${data.imageUrl}" alt="City Image">
-        <p>Duration: ${data.duration}</p>
-    `;
+    localStorage.setItem('tripData', JSON.stringify(existingData));
 }
-
-// استدعاء التحديث عند تحميل الصفحة لضمان تحديث الواجهة إذا كان هناك بيانات محفوظة
-document.addEventListener("DOMContentLoaded", updateUI);
 
 export { submitTripHandler };

@@ -18,15 +18,14 @@
     </div>
     <div class="add-new-trip-card container display-0">
         <h1>Add New Trip</h1>
-        <form action="submit" method="post" onsubmit="return Client.submitTripHandler(event)">
+        <form>
             <input type="text" placeholder="Enter Your Destination">
             <input type="text" id="dateInput" placeholder="When are you leaving?" onfocus="(this.type='date')"
                 onblur="if(!this.value) this.type='text'">
             <input type="text" id="dateInput" placeholder="When are you coming back?" onfocus="(this.type='date')"
                 onblur="if(!this.value) this.type='text'">
             <div class="button-group flex-direction-row">
-                <button class="button-next" onclick="return Client.submitTripHandler(event)"
-                    onsubmit="return submitTripHandler(event)">Add Trip</button>
+                <button class="button-next" onclick="return Client.submitTripHandler(event)">Add Trip</button>
                 <button class="button-next">Cancel</button>
             </div>
         </form>
@@ -34,50 +33,9 @@
     <div class="empty">
         <img src="assets/empty-data.svg" alt="empty">
     </div>
-    <div id="result">
-        <div>
-            <h3>Paris, France</h3>
-            <p>Weather: Overcast clouds</p>
-            <p>Duration: 604800000</p>
-        </div>
-        <div class="buttons">
-            <button type="button">
-                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect y="0.5" width="32" height="32" rx="16" fill="#219EBC" />
-                    <path d="M13.5601 22.5V17.5" stroke="white" stroke-width="1.5" stroke-miterlimit="10"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M16 20H11" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                    <path d="M12 6.5V9.5" stroke="white" stroke-width="1.5" stroke-miterlimit="10"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M20 6.5V9.5" stroke="white" stroke-width="1.5" stroke-miterlimit="10"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    <path
-                        d="M19.81 7.91992C23.15 8.03992 24.84 9.26992 24.94 13.9699L25.07 20.1399C25.15 24.2599 24.2 26.3299 19.2 26.4399L13.2 26.5599C8.19996 26.6599 7.15996 24.6199 7.07996 20.5099L6.93996 14.3299C6.83996 9.62992 8.48996 8.32992 11.81 8.07992L19.81 7.91992Z"
-                        stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
-            </button>
-            <button type="button">
-                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect y="0.5" width="32" height="32" rx="16" fill="#FB8500" />
-                    <path
-                        d="M25 10.4805C21.67 10.1505 18.32 9.98047 14.98 9.98047C13 9.98047 11.02 10.0805 9.04 10.2805L7 10.4805"
-                        stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path
-                        d="M12.5004 9.47073L12.7204 8.16073C12.8804 7.21073 13.0004 6.50073 14.6904 6.50073H17.3104C19.0004 6.50073 19.1304 7.25073 19.2804 8.17073L19.5004 9.47073"
-                        stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path
-                        d="M22.8499 13.6399L22.1999 23.7099C22.0899 25.2799 21.9999 26.4999 19.2099 26.4999H12.7899C9.9999 26.4999 9.9099 25.2799 9.7999 23.7099L9.1499 13.6399"
-                        stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M14.33 21H17.66" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                    <path d="M13.4996 17.0007H18.4996" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
+    <div id="result-container">
     </div>
+   
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {

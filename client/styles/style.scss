@@ -11,6 +11,7 @@ $button-hover: #1d99b8;
 $text-button: #FFF;
 $border-button: #8ECAE6;
 $cards-bg: rgba(255, 255, 255, 0.9);
+$spacing: 16px;
 $number-5: 5px;
 $number-10: 10px;
 $number-12: 12px;
@@ -133,61 +134,84 @@ input {
 }
 
 // Card of Trip Design
+#result-container {
+    display: flex;
+    flex-wrap: nowrap; // السماح بنقل العناصر للسطر التالي عند الحاجة
 
-#result {
-    background-image: linear-gradient(rgba($black, 0.5), rgba($black, 0.5)), url(https://pixabay.com/get/g4f6eb1f023e7b1922c4fcbdc156533c47ab3db538d1c596703543d1c39748ec9bbbdfc7c248043e609ebeff4a6da4f1f97ada77949c1fb6675b65c8084dd3134_640.jpg);
-    background-size: cover;
-    background-position: center;
-    color: $white;
+    margin-left: 48px;
+    overflow-x: auto; // تمكين التمرير الأفقي
+    gap: $number-20; // تباعد بين الكروت
     padding: $number-20;
-    width: 90%;
-    max-width: 332px;
+    scrollbar-width: none;
+    scroll-padding-left: $number-20; 
+    /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+
+.card {
+    flex: 1 1 calc(33.33% - #{$number-20}); // توزيع الكروت بالتساوي مع الفراغات
+    min-width: 332px;
     height: 250px;
-    border-radius: $number-32;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    margin: 0 auto;
-}
 
-#result h3,
-#result p {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    font-weight: 400;
     color: $white;
-    margin: 0.5rem 0;
-}
+    padding: $number-20;
+    width: 90%;
+    border-radius: $number-32;
 
-#result .buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: $number-10;
-    position: absolute;
-    bottom: $number-20;
-    right: $number-20;
-}
+    margin-right: $number-20; // تباعد بين الكروت
+    vertical-align: top; // محاذاة الكروت من الأعلى
 
-#result button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
+    &:last-child {
+        margin-right: 0; // إزالة الهامش من آخر كارد
+    }
 
-#result button svg {
-    width: $number-32;
-    height: $number-32;
+    h3,
+    p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        font-weight: 400;
+        color: $white;
+        margin: 0.5rem 0;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: $number-10;
+        position: absolute;
+        bottom: $number-20;
+        right: $number-20;
+    }
+
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        svg {
+            width: $number-32;
+            height: $number-32;
+        }
+    }
 }
 
 @media (max-width: 768px) {
-    #result {
+    .card {
         height: 250px;
-        max-width: 250px;
+        max-width: 250px; // تقليل عرض الكارد على الشاشات الصغيرة
+        min-width: 250px;
     }
 
-    #result h3,
-    #result p {
-        font-size: 1rem;
+    .card h3,
+    .card p {
+        font-size: 1rem; // تقليل حجم الخط على الشاشات الصغيرة
     }
 }

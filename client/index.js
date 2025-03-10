@@ -5,5 +5,10 @@ import './assets/delete-icon.svg';
 import './assets/add-note-icon.svg';
 import './styles/style.scss';
 import { submitTripHandler } from './js/submitTrip';
+import { deleteTrip } from './js/deleteTrip';
+import { updateUI } from './js/updateUI';
 
-export { submitTripHandler };
+document.addEventListener("DOMContentLoaded", updateUI);
+
+
+export { submitTripHandler, deleteTrip, updateUI };
