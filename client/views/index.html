@@ -5,10 +5,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Application</title>
+    <style>
+        body {
+            background-image: url('../assets/background-image.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .button-next {
+            color: #fff;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 40px;
+            display: flex;
+            padding: 16px 36px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 32px;
+            border: 1px solid #8ecae6;
+            background: #219ebc;
+            transition: transform 0.3s ease-in-out;
+            line-height: 10px;
+        }
+
+        .button-next:hover {
+            transform: scale(1.05);
+            background-color: #1d99b8;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            max-width: 90%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: left;
+            color: #333;
+            width: 50vw;
+            height: 50vh;
+            box-sizing: border-box;
+            padding: 1.5vh 3vw;
+        }
+
+        .flex-direction-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            gap: 1rem;
+        }
+
+        .image-container {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-left: 50px;
+        }
+
+        .subtitle {
+            color: #333;
+            font-size: 32px;
+            font-weight: normal;
+            margin-top: 10px;
+        }
+
+        .description {
+            color: #333;
+            font-size: 20px;
+            font-weight: normal;
+            margin-top: 10px;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .start-button {
+            background-color: #219ebc;
+            color: #333;
+            border-radius: 48px;
+            height: 70px;
+            width: 300px;
+            font-size: 24px;
+            letter-spacing: 2px;
+            font-weight: normal;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .start-button:hover {
+            background-color: #1d99b8;
+            transform: translateY(-5px);
+        }
+
+        .start-button:active {
+            transform: translateY(2px);
+        }
+
+        @media screen and (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .image-container {
+                margin-bottom: 20px;
+            }
+
+            .text-container {
+                padding-left: 0;
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 20px;
+            color: #666;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            margin: 10px 0;
+            padding-left: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 48px;
+            font-size: 16px;
+        }
+
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .display-0 {
+            display: none;
+        }
+
+      /* التنسيق العام للكارد */
+      #result {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://pixabay.com/get/gc9a6a17799ca82956d586cfbe4a66a1b6d6a0af738cf70939290994a1822ca26aa15ee8ecd178efe7ab4d4d66ca1aa31d9448b44f4f7b1e8b58845dca5c3ba09_640.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px;
+            width: 90%; /* عرض نسبي */
+            max-width: 400px; /* أقصى عرض للكارد */
+            height: 300px; /* ارتفاع ثابت */
+            border-radius: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* توزيع العناصر بشكل متساوٍ */
+            position: relative; /* لتحديد موقع الأزرار */
+            margin: 0 auto; /* توسيط الكارد */
+        }
+
+        /* تنسيق النصوص */
+        #result h3,
+        #result p {
+            font-size: 1.2rem; /* حجم الخط نسبي */
+            line-height: 1.5;
+            font-weight: 400;
+            color: #FFF;
+            margin: 0.5rem 0; /* مسافة بين النصوص */
+        }
+
+        /* تنسيق الأزرار */
+        #result .buttons {
+            display: flex;
+            justify-content: flex-end; /* محاذاة الأزرار لليمين */
+            gap: 10px; /* مسافة بين الأزرار */
+            position: absolute; /* تثبيت الأزرار في الأسفل */
+            bottom: 20px; /* المسافة من الأسفل */
+            right: 20px; /* المسافة من اليمين */
+        }
+
+        #result button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result button svg {
+            width: 32px;
+            height: 32px;
+        }
+
+       
+        @media (max-width: 768px) {
+            #result {
+                height: 250px; /* تقليل الارتفاع في الشاشات الصغيرة */
+            }
+
+            #result h3,
+            #result p {
+                font-size: 1rem; /* تقليل حجم الخط في الشاشات الصغيرة */
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="greetings-card container">
+    <div class="greetings-card container display-0">
         <div>
             <h1>Welcome to <img src="assets/logo.svg" alt="logo" loading="lazy"></h1>
             <h2>Your Next Adventure Begins Now!</h2>
@@ -16,7 +254,7 @@
         </div>
         <button class="button-next">Next</button>
     </div>
-    <div class="add-new-trip-card container">
+    <div class="add-new-trip-card container display-0">
         <h1>Add New Trip</h1>
         <form action="submit" method="post" onsubmit="return Client.submitTripHandler(event)">
             <input type="text" placeholder="Enter Your Destination">
@@ -32,16 +270,60 @@
         </form>
     </div>
 
-    <div id="result"></div>
-
+    <div id="result">
+        <div>
+            <h3>Paris, France</h3>
+            <p>Weather: Overcast clouds</p>
+            <p>Duration: 604800000</p>
+        </div>
+        <div class="buttons">
+            <button type="button">
+                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="0.5" width="32" height="32" rx="16" fill="#219EBC" />
+                    <path d="M13.5601 22.5V17.5" stroke="white" stroke-width="1.5" stroke-miterlimit="10"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16 20H11" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M12 6.5V9.5" stroke="white" stroke-width="1.5" stroke-miterlimit="10"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M20 6.5V9.5" stroke="white" stroke-width="1.5" stroke-miterlimit="10"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M19.81 7.91992C23.15 8.03992 24.84 9.26992 24.94 13.9699L25.07 20.1399C25.15 24.2599 24.2 26.3299 19.2 26.4399L13.2 26.5599C8.19996 26.6599 7.15996 24.6199 7.07996 20.5099L6.93996 14.3299C6.83996 9.62992 8.48996 8.32992 11.81 8.07992L19.81 7.91992Z"
+                        stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button type="button">
+                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="0.5" width="32" height="32" rx="16" fill="#FB8500" />
+                    <path
+                        d="M25 10.4805C21.67 10.1505 18.32 9.98047 14.98 9.98047C13 9.98047 11.02 10.0805 9.04 10.2805L7 10.4805"
+                        stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M12.5004 9.47073L12.7204 8.16073C12.8804 7.21073 13.0004 6.50073 14.6904 6.50073H17.3104C19.0004 6.50073 19.1304 7.25073 19.2804 8.17073L19.5004 9.47073"
+                        stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M22.8499 13.6399L22.1999 23.7099C22.0899 25.2799 21.9999 26.4999 19.2099 26.4999H12.7899C9.9999 26.4999 9.9099 25.2799 9.7999 23.7099L9.1499 13.6399"
+                        stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M14.33 21H17.66" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M13.4996 17.0007H18.4996" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+    </div>
     <script>
-        // Check that service workers are supported
         if ('serviceWorker' in navigator) {
-            // Use the window load event to keep the page load performant
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./service-worker.js')
-                    .then(reg => console.log('Service Worker registered:', reg))
-                    .catch(err => console.error('Service Worker registration failed:', err));
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
             });
         }
     </script>
