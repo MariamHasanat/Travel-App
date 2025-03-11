@@ -16,13 +16,14 @@ function calculateDaysLeft(timestamp) {
     const today = new Date();
 
     today.setHours(0, 0, 0, 0);
+    tripDate.setHours(0, 0, 0, 0);
 
     if (tripDate.toDateString() === today.toDateString()) {
         return "Trip is today";
     }
 
     const diff = tripDate - today;
-    const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    const daysLeft = Math.floor(diff / (1000 * 60 * 60 * 24));
 
     return daysLeft >= 0 ? daysLeft + ` day(s)` : "Trip has passed";
 }
@@ -101,4 +102,4 @@ function updateUI() {
     });
 }
 
-export { updateUI };
+export { updateUI , formatDate, calculateDaysLeft};
