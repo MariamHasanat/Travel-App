@@ -47,7 +47,6 @@ function updateUI() {
             emElement.style.height = "auto";
             
             resultContainer.appendChild(emElement);
-            console.log("Image added:", emElement);
         }
     }
     

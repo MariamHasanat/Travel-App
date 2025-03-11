@@ -12,7 +12,7 @@ function submitTripHandler(event) {
     const tripDuration = calculateTripDuration(departureDate, returnDate);
     const trip = { city, date: departureDate, duration: tripDuration };
 
-    console.log(trip);
+
     postTrip('http://localhost:8081/getData', trip);
     document.getElementById('add-new-trip-card').style.display = 'none';
 // clear the fields after submitting the data
@@ -44,7 +44,6 @@ function postTrip(url, trip) {
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             saveToLocalStorage(data);
             Client.updateUI();
         })

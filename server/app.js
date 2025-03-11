@@ -20,7 +20,7 @@ const GEONAMES_USERNAME = 'mariam_hasanat';
 
 app.post('/getData', async (req, res) => {
     const { city, date, duration } = req.body;
-    console.log({ city, date });
+  
     if (!city || !date) return res.status(400).json({ error: 'City and date are required' });
 
     try {
@@ -37,8 +37,6 @@ app.post('/getData', async (req, res) => {
         // 3. Get Image from Pixabay API
         const imageResponse = await axios.get(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=${city}&image_type=photo`);
         const imageUrl = imageResponse.data.hits.length ? imageResponse.data.hits[0].webformatURL : '';
-
-        console.log({ city, country: countryName, lat, lng, forecast, imageUrl });
 
         res.json({ city, date, country: countryName, lat, lng, forecast, imageUrl, duration });
     } catch (error) {
