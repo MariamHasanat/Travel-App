@@ -8,15 +8,15 @@
 </head>
 
 <body>
-    <div class="greetings-card container">
+    <div id="greetings-card" class="greetings-card container text-center">
         <div>
             <h1>Welcome to <img src="assets/logo.svg" alt="logo" loading="lazy"></h1>
             <h2>Your Next Adventure Begins Now!</h2>
             <p>Smarter Trips, Better Journeys.</p>
         </div>
-        <button class="button-next">Next</button>
+        <button id="nextBtn" class="btn btn-primary button-next">Next</button>
     </div>
-    <div class="add-new-trip-card container">
+    <div id="add-new-trip-card" class="add-new-trip-card container display-0">
         <h1>Add New Trip</h1>
         <form>
             <input type="text" placeholder="Enter Your Destination">
@@ -30,7 +30,6 @@
             </div>
         </form>
     </div>
-
     <div class="add-note container display-0">
         <h1>Add a Note</h1>
         <form>
@@ -43,10 +42,11 @@
             </div>
         </form>
     </div>
-    <div class="empty display-0">
+    <div class="empty container display-0" id="empty-container">
+        <button  id="addTripBtn"  onclick="return Client.addTripBtn(event)">Add New Trip</button>
         <img src="assets/empty-data.svg" alt="empty">
     </div>
-    <div id="result-container">
+    <div id="result-container" class="result-container display-0">
     </div>
 
     <script>
