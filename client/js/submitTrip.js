@@ -14,6 +14,7 @@ function submitTripHandler(event) {
 
     console.log(trip);
     postTrip('http://localhost:8081/getData', trip);
+    document.getElementById('add-new-trip-card').style.display = 'none';
 }
 
 function calculateTripDuration(departureDate, returnDate) {
