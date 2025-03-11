@@ -1,0 +1,42 @@
+#add-new-trip-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+/* تأكد من أن الخلفية الداكنة تظهر عند فتح الفورم */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+#add-new-trip-card:not(.display-0) ~ body::before {
+    display: block;
+}
+
+/* تحسين التمركز للشاشات الصغيرة */
+@media (max-width: 500px) {
+    #add-new-trip-card {
+        width: 90%;
+        max-width: none;
+        padding: 15px;
+        left: 46%;
+        transform: translate(-50%, -50%);
+    }
+}

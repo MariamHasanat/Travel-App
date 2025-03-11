@@ -9,7 +9,7 @@ import './styles/style.scss';
 import './styles/section.scss';
 import './styles/models.scss';
 import './styles/note.scss';
-
+import './styles/addNewTrip.scss';
 import { submitTripHandler } from './js/submitTrip';
 import { deleteTrip } from './js/deleteTrip';
 import { updateUI } from './js/updateUI';
