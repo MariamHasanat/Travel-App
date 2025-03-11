@@ -8,6 +8,7 @@ import { submitTripHandler } from './js/submitTrip';
 import { deleteTrip } from './js/deleteTrip';
 import { updateUI } from './js/updateUI';
 import { cancel } from './js/cancel';
+import { addNote, submitNoteHandler } from './js/addNote'
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -23,4 +24,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-export { submitTripHandler, deleteTrip, updateUI, cancel };
+export { submitTripHandler, deleteTrip, updateUI, cancel, addNote, submitNoteHandler };

@@ -41,6 +41,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 0px 36px;
     color: $text-color;
 }
 
@@ -138,12 +139,12 @@ input {
     display: flex;
     flex-wrap: nowrap; // السماح بنقل العناصر للسطر التالي عند الحاجة
 
-    margin-left: 48px;
+    // margin-left: 48px;
     overflow-x: auto; // تمكين التمرير الأفقي
     gap: $number-20; // تباعد بين الكروت
-    padding: $number-20;
+    // padding: $number-20;
     scrollbar-width: none;
-    scroll-padding-left: $number-20; 
+    scroll-padding-left: $number-20;
     /* Firefox */
 
     &::-webkit-scrollbar {
@@ -155,6 +156,7 @@ input {
 .card {
     flex: 1 1 calc(33.33% - #{$number-20}); // توزيع الكروت بالتساوي مع الفراغات
     min-width: 332px;
+    max-width: 332px;
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -201,9 +203,19 @@ input {
             height: $number-32;
         }
     }
+
+    .notes-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: 16px;
+    }
+
     .card {
         height: 250px;
         max-width: 250px; // تقليل عرض الكارد على الشاشات الصغيرة

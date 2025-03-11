@@ -23,9 +23,10 @@ function updateUI() {
 
     dataArray.forEach((data, index) => {
         if (!data || !data.forecast || !data.forecast.weather) {
-            console.error("Data is not completed for trip:", data);
+            console.error("Data is incomplete for trip:", data);
             return;
         }
+
         const durationInDays = Math.floor(data.duration / (1000 * 60 * 60 * 24));
 
         const card = document.createElement('div');
@@ -36,11 +37,19 @@ function updateUI() {
             card.style.backgroundSize = 'cover';
             card.style.backgroundPosition = 'center';
         }
+
         card.innerHTML = `
             <div>
                 <h3>${data.city}, ${data.country || 'Unknown Country'}</h3>
                 <p>Weather: ${data.forecast.weather.description || 'No Data'}</p>
                 <p>Duration: ${durationInDays} day(s)</p>
+                
+                 <span class="notes">
+                    ${Array.isArray(data.notes) ? `<p>Notes: <div class="notes-container">` + data.notes.map(note => `<span class="note-item">📝 ${note}</span>`).join(', ')+`</div></p>` : ''
+            }
+                </span>
+              
+               
             </div>
             <div class="buttons">
                 <button type="button" onclick="return Client.addNote(${index})">
