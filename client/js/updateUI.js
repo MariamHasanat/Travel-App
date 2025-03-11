@@ -44,14 +44,14 @@ function updateUI() {
                 <p>Weather: ${data.forecast.weather.description || 'No Data'}</p>
                 <p>Duration: ${durationInDays} day(s)</p>
                 
-                 <span class="notes">
-                    ${Array.isArray(data.notes) ? `<p>Notes: <div class="notes-container">` + data.notes.map(note => `<span class="note-item">📝 ${note}</span>`).join(', ')+`</div></p>` : ''
-            }
+                <span class="notes">
+                    ${data.notes ? `<p>Notes: <span class="note-item">📝 ${data.notes}</span></p>` : ''}
                 </span>
-              
-               
             </div>
             <div class="buttons">
+                <button type="button" onclick="return Client.editNoteHandler(${index})">
+                    <img src="/assets/edit-note.svg" alt="edit-note-icon">
+                </button>
                 <button type="button" onclick="return Client.addNote(${index})">
                     <img src="/assets/add-note-icon.svg" alt="add-note-icon">
                 </button>
