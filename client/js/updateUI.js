@@ -21,23 +21,6 @@ function calculateDaysLeft(timestamp) {
     return daysLeft >= 0 ? daysLeft : "Trip has passed";
 }
 
-function updateAddNoteButton(index, hasNotes) {
-    const button = document.getElementById(`add-note-btn-${index}`);
-    if (button) {
-        button.disabled = !hasNotes;
-        
-        // تحديد الأيقونة بناءً على وجود النوتس
-        const icon = button.querySelector('img');
-        
-        if (hasNotes) {
-            icon.src = '/assets/edit-note.svg'; // الأيقونة في حالة وجود النوتس
-        } else {
-            icon.src = '/assets/edit-note-disabled.svg'; // الأيقونة في حالة عدم وجود النوتس
-        }
-    }
-}
-
-
 function updateUI() {
     const storedData = localStorage.getItem('tripData');
     const emptyState = document.querySelector('.empty');
@@ -69,36 +52,38 @@ function updateUI() {
 
         const durationInDays = Math.floor(data.duration / (1000 * 60 * 60 * 24));
 
+        // إنشاء الـ card أولاً
         const card = document.createElement('div');
         card.classList.add('card');
 
+        // تحديد إذا كان يوجد نوتس
         const hasNotes = data.notes?.trim().length > 0;
-        const iconSrc = hasNotes ? '/assets/edit-note.svg' : '/assets/edit-note-disabled.svg';
 
-
+        // إضافة الـ background image إذا كان موجوداً
         if (data.imageUrl) {
             card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(${data.imageUrl})`;
             card.style.backgroundSize = 'cover';
             card.style.backgroundPosition = 'center';
         }
 
+        // إضافة المحتوى داخل الـ card
         card.innerHTML = `
             <div>
                 <h3>My Trip to: ${data.city}, ${data.country || 'Unknown Country'}</h3>
                 <p>Departing: ${formatDate(data.date) || 'No Data'}</p>
                 <p>Time Left: ${calculateDaysLeft(data.date) || 'No Data'} day(s) | Duration: ${durationInDays} day(s)</p>
                 <p>Weather: High: ${data.forecast.high_temp}°C | Low: ${data.forecast.low_temp}°C | ${data.forecast.weather.description || 'No Data'} &nbsp;<img class="weather-icon" src="https://www.weatherbit.io/static/img/icons/${data.forecast.weather.icon}.png" alt="Weather Icon">
- </p>
+                </p>
                 <span class="notes">
                     ${data.notes ? `<p>Notes: <span class="note-item">📝 ${data.notes}</span></p>` : ''}
                 </span>
             </div>
             <div class="buttons">
-                <button type="button" id="add-note-btn-${index}" onclick="return Client.editNoteHandler(${index})" ${!hasNotes ? 'disabled' : ''}>
-                    <img src="${iconSrc}" alt="edit-note-icon"> 
-                </button>
-                <button type="button" onclick="return Client.addNote(${index})">
+                <button type="button" id="add-note-btn-${index}" onclick="return Client.editNoteHandler(${index})" class="${hasNotes ? 'display-0' : ''}">
                     <img src="/assets/add-note-icon.svg" alt="add-note-icon">
+                </button>
+                <button type="button" onclick="return Client.editNoteHandler(${index})" class="${!hasNotes ? 'display-0' : ''}">
+                    <img src="/assets/edit-note.svg" alt="edit-note-icon">
                 </button>
                 <button type="button" onclick="return Client.deleteTrip(${index})">
                     <img src="/assets/delete-icon.svg" alt="delete-icon">
@@ -106,6 +91,7 @@ function updateUI() {
             </div>
         `;
 
+        // الآن بعد تحديد الأزرار و الـ classes، نضيف الـ card
         resultContainer.appendChild(card);
     });
 }
