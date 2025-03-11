@@ -42,26 +42,38 @@ function submitNoteHandler(event) {
 
     // Update the UI after saving the note
     Client.updateUI();
+
+    // Hide the note form after submitting the note
+    const noteForm = document.querySelector(".add-note");
+    noteForm.classList.add("display-0"); // Hide the form after submitting the note
 }
 
 // Function to allow editing a note
 function editNoteHandler(index) {
     const data = getData();
-    
+
     if (!data || !data[index] || !data[index].notes) {
         console.error('Note not found!');
         return;
     }
-    
+
     const note = data[index].notes;
     
     // Show the note form and pre-fill it with the existing note
     const noteForm = document.querySelector(".add-note");
-    noteForm.classList.remove("display-0");
+
+    if (!noteForm) {
+        console.error('The note form element is missing!');
+        return;
+    }
+
+    noteForm.classList.remove("display-0");  // Make sure the note form is visible
     noteForm.dataset.index = index; // Assign index to dataset for later use
 
     // Pre-fill the textarea with the current note
     document.getElementById('add-note').value = note;
+   
 }
+
 
 export { addNote, submitNoteHandler, editNoteHandler };

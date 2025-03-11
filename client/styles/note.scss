@@ -1,0 +1,93 @@
+@use 'style' as style;
+
+.add-note.container {
+    position: fixed;  // تأكد من أن العنصر ثابت في مكانه
+    top: 50%;  // توسيطه عموديًا في منتصف الشاشة
+    left: 50%;  // توسيطه أفقيًا في منتصف الشاشة
+    transform: translate(-50%, -50%);  // لجعل العنصر في المنتصف تمامًا
+    width: 80%;  // عرض العنصر سيكون 80% من عرض الشاشة
+    max-width: 500px;  // حد أقصى للعرض
+    padding: 20px;
+    background-color: style.$white;
+    border-radius: style.$number-20;
+    box-shadow: 0px 5px 15px rgba(style.$black, 0.1);
+    z-index: 9999;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: style.$text-color;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: style.$number-8;
+            border: 1px solid style.$border-button;
+            background-color: rgb(232, 249, 254);
+            resize: none;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+
+            .button-next {
+                color: style.$text-button;
+                font-size: 1rem;
+                font-weight: 500;
+                padding: style.$number-16 style.$number-36;
+                border-radius: style.$number-32;
+                border: 1px solid style.$border-button;
+                background: style.$button-color;
+                transition: transform 0.3s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.05);
+                    background-color: style.$button-hover;
+                }
+            }
+        }
+    }
+
+    // Responsive Styles
+    @media (max-width: 1024px) {
+        width: 90%;
+        max-width: 400px;
+        padding: 15px;
+    }
+
+    @media (max-width: 768px) {
+        width: 95%;
+        max-width: 350px;
+        padding: 12px;
+        left: 45%;
+    }
+
+    @media (max-width: 480px) {
+        width: 100%;
+        max-width: 320px;
+        padding: 10px;
+        left: 45%;
+    }
+}

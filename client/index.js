@@ -8,6 +8,8 @@ import './assets/edit-note-disabled.svg';
 import './styles/style.scss';
 import './styles/section.scss';
 import './styles/models.scss';
+import './styles/note.scss';
+
 import { submitTripHandler } from './js/submitTrip';
 import { deleteTrip } from './js/deleteTrip';
 import { updateUI } from './js/updateUI';
@@ -15,6 +17,7 @@ import { cancel } from './js/cancel';
 import { addNote, submitNoteHandler, editNoteHandler } from './js/addNote';
 import { setTripDateRestrictions } from './js/dateRes';
 import { addTripBtn } from './js/addTripBtn';
+import { cancelAddNote } from './js/cancelAddNote';
 
 document.addEventListener("DOMContentLoaded", () => {
     setTripDateRestrictions();
@@ -39,4 +42,4 @@ document.getElementById("nextBtn").addEventListener("click", function () {
     document.getElementById("empty-container").style.display = "block";
 });
 
-export { addTripBtn, submitTripHandler, deleteTrip, updateUI, cancel, addNote, submitNoteHandler, editNoteHandler };
+export { addTripBtn, cancelAddNote, submitTripHandler, deleteTrip, updateUI, cancel, addNote, submitNoteHandler, editNoteHandler };
