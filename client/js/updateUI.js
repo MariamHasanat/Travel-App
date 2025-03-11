@@ -21,6 +21,23 @@ function calculateDaysLeft(timestamp) {
     return daysLeft >= 0 ? daysLeft : "Trip has passed";
 }
 
+function updateAddNoteButton(index, hasNotes) {
+    const button = document.getElementById(`add-note-btn-${index}`);
+    if (button) {
+        button.disabled = !hasNotes;
+        
+        // تحديد الأيقونة بناءً على وجود النوتس
+        const icon = button.querySelector('img');
+        
+        if (hasNotes) {
+            icon.src = '/assets/edit-note.svg'; // الأيقونة في حالة وجود النوتس
+        } else {
+            icon.src = '/assets/edit-note-disabled.svg'; // الأيقونة في حالة عدم وجود النوتس
+        }
+    }
+}
+
+
 function updateUI() {
     const storedData = localStorage.getItem('tripData');
     const emptyState = document.querySelector('.empty');
@@ -55,6 +72,10 @@ function updateUI() {
         const card = document.createElement('div');
         card.classList.add('card');
 
+        const hasNotes = data.notes?.trim().length > 0;
+        const iconSrc = hasNotes ? '/assets/edit-note.svg' : '/assets/edit-note-disabled.svg';
+
+
         if (data.imageUrl) {
             card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(${data.imageUrl})`;
             card.style.backgroundSize = 'cover';
@@ -73,8 +94,8 @@ function updateUI() {
                 </span>
             </div>
             <div class="buttons">
-                <button type="button" onclick="return Client.editNoteHandler(${index})">
-                    <img src="/assets/edit-note.svg" alt="edit-note-icon">
+                <button type="button" id="add-note-btn-${index}" onclick="return Client.editNoteHandler(${index})" ${!hasNotes ? 'disabled' : ''}>
+                    <img src="${iconSrc}" alt="edit-note-icon"> 
                 </button>
                 <button type="button" onclick="return Client.addNote(${index})">
                     <img src="/assets/add-note-icon.svg" alt="add-note-icon">

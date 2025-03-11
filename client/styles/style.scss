@@ -202,6 +202,11 @@ input {
             width: $number-32;
             height: $number-32;
         }
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+
     }
 
     .notes-container {

@@ -4,6 +4,7 @@ import './assets/empty-data.svg';
 import './assets/delete-icon.svg';
 import './assets/add-note-icon.svg';
 import './assets/edit-note.svg';
+import './assets/edit-note-disabled.svg';
 import './styles/style.scss';
 import { submitTripHandler } from './js/submitTrip';
 import { deleteTrip } from './js/deleteTrip';
