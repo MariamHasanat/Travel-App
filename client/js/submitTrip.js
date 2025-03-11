@@ -62,4 +62,4 @@ function saveToLocalStorage(newData) {
     localStorage.setItem('tripData', JSON.stringify(existingData));
 }
 
-export { submitTripHandler };
+export { submitTripHandler , calculateTripDuration, postTrip};
