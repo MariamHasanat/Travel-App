@@ -7,7 +7,7 @@ function cancel(event) {
     }
 
     // تحقق من وجود بيانات في localStorage
-    const trips = JSON.parse(localStorage.getItem("trips"));
+    const trips = JSON.parse(localStorage.getItem("tripData"));
     const addNewTripCard = document.getElementById("add-new-trip-card");
     const emptyContainer = document.getElementById("empty-container");
 
@@ -15,7 +15,11 @@ function cancel(event) {
     if (!trips || trips.length === 0) {
         addNewTripCard.style.display = "none"; // إخفاء النموذج
         emptyContainer.style.display = "block"; // إظهار حالة الـ empty
-    } else {
+    }else if (trips.length > 0){
+        addNewTripCard.style.display = "none"; // إخفاء النموذج
+        emptyContainer.style.display = "none"; // إظهار حالة الـ empty
+    }
+     else {
         addNewTripCard.style.display = "block"; // إظهار النموذج إذا كان هناك عناصر
         emptyContainer.style.display = "none"; // إخفاء حالة الـ empty
     }

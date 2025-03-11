@@ -3,7 +3,7 @@ function submitTripHandler(event) {
     const city = document.querySelector("input[placeholder='Enter Your Destination']").value;
     const departureDate = document.querySelector("#departureDate").value;
     const returnDate = document.querySelector("#returnDate").value;
-    
+
     if (!departureDate || !returnDate) {
         alert("Both dates are required.");
         return;
@@ -15,19 +15,24 @@ function submitTripHandler(event) {
     console.log(trip);
     postTrip('http://localhost:8081/getData', trip);
     document.getElementById('add-new-trip-card').style.display = 'none';
+// clear the fields after submitting the data
+    document.querySelector("input[placeholder='Enter Your Destination']").value = '';
+    document.querySelector("#departureDate").value = '';
+    document.querySelector("#returnDate").value = '';
+
 }
 
 function calculateTripDuration(departureDate, returnDate) {
     const departure = new Date(departureDate);
     const returnD = new Date(returnDate);
-    
+
     const diffTime = returnD - departure;
-    const diffDays = diffTime / (1000 * 3600 * 24); 
+    const diffDays = diffTime / (1000 * 3600 * 24);
 
     if (diffDays === 0) {
-        return "Arrival is today"; 
+        return "Arrival is today";
     }
-    
+
     return diffDays + " day(s)";
 }
 

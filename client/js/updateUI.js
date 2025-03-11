@@ -51,8 +51,8 @@ function updateUI() {
     resultContainer.innerHTML = '';
 
     dataArray.forEach((data, index) => {
-        if (!data || !data.forecast || !data.forecast.weather) {
-            console.error("Data is incomplete for trip:", data);
+        if (!data) {
+            console.error("Data is not defined for trip:", data);
             return;
         }
 
@@ -72,8 +72,8 @@ function updateUI() {
                 <h3>My Trip to: ${data.city}, ${data.country || 'Unknown Country'}</h3>
                 <p>Departing: ${formatDate(data.date) || 'No Data'}</p>
                 <p>Time Left: ${calculateDaysLeft(data.date) || 'No Data'} | Duration: ${data.duration}</p>
-                <p>Weather: High: ${data.forecast.high_temp}°C | Low: ${data.forecast.low_temp}°C | ${data.forecast.weather.description || 'No Data'} &nbsp;<img class="weather-icon" src="https://www.weatherbit.io/static/img/icons/${data.forecast.weather.icon}.png" alt="Weather Icon">
-                </p>
+                <p>Weather: ${data.forecast? `High: ${data.forecast.high_temp}°C | Low: ${data.forecast.low_temp}°C | ${data.forecast.weather.description || 'No Data'} &nbsp;<img class="weather-icon" src="https://www.weatherbit.io/static/img/icons/${data.forecast.weather.icon}.png" alt="Weather Icon">
+                </p>`: `No Weather Data Found</p>` }
                 <span class="notes">
                     ${data.notes ? `<p>Notes: <span class="note-item">📝 ${data.notes}</span></p>` : ''}
                 </span>
