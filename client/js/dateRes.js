@@ -3,7 +3,7 @@ function setTripDateRestrictions() {
     const returnInput = document.getElementById('returnDate');
 
     if (departureInput && returnInput) {
-        const today = new Date().toISOString().split('T')[0]; // تنسيق YYYY-MM-DD
+        const today = new Date().toISOString().split('T')[0]; 
         departureInput.min = today;
 
         departureInput.addEventListener('change', function() {
