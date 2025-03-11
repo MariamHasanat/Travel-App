@@ -10,7 +10,8 @@ import { submitTripHandler } from './js/submitTrip';
 import { deleteTrip } from './js/deleteTrip';
 import { updateUI } from './js/updateUI';
 import { cancel } from './js/cancel';
-import { addNote, submitNoteHandler, editNoteHandler } from './js/addNote'
+import { addNote, submitNoteHandler, editNoteHandler } from './js/addNote';
+import { setTripDateRestrictions } from './js/dateRes';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    setTripDateRestrictions();
 
 });
 

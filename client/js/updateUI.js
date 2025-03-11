@@ -15,10 +15,16 @@ function calculateDaysLeft(timestamp) {
     const tripDate = new Date(timestamp);
     const today = new Date();
     
-    const diff = tripDate - today; // الفرق بالميلي ثانية
-    const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24)); // تحويل إلى أيام
+    today.setHours(0, 0, 0, 0);
     
-    return daysLeft >= 0 ? daysLeft : "Trip has passed";
+    if (tripDate.toDateString() === today.toDateString()) {
+        return "Trip is today";
+    }
+
+    const diff = tripDate - today; 
+    const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    
+    return daysLeft >= 0 ? daysLeft + ` day(s)` : "Trip has passed";
 }
 
 function updateUI() {
@@ -50,28 +56,22 @@ function updateUI() {
             return;
         }
 
-        const durationInDays = Math.floor(data.duration / (1000 * 60 * 60 * 24));
-
-        // إنشاء الـ card أولاً
         const card = document.createElement('div');
         card.classList.add('card');
 
-        // تحديد إذا كان يوجد نوتس
         const hasNotes = data.notes?.trim().length > 0;
 
-        // إضافة الـ background image إذا كان موجوداً
         if (data.imageUrl) {
             card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(${data.imageUrl})`;
             card.style.backgroundSize = 'cover';
             card.style.backgroundPosition = 'center';
         }
 
-        // إضافة المحتوى داخل الـ card
         card.innerHTML = `
             <div>
                 <h3>My Trip to: ${data.city}, ${data.country || 'Unknown Country'}</h3>
                 <p>Departing: ${formatDate(data.date) || 'No Data'}</p>
-                <p>Time Left: ${calculateDaysLeft(data.date) || 'No Data'} day(s) | Duration: ${durationInDays} day(s)</p>
+                <p>Time Left: ${calculateDaysLeft(data.date) || 'No Data'} | Duration: ${data.duration}</p>
                 <p>Weather: High: ${data.forecast.high_temp}°C | Low: ${data.forecast.low_temp}°C | ${data.forecast.weather.description || 'No Data'} &nbsp;<img class="weather-icon" src="https://www.weatherbit.io/static/img/icons/${data.forecast.weather.icon}.png" alt="Weather Icon">
                 </p>
                 <span class="notes">
@@ -91,7 +91,6 @@ function updateUI() {
             </div>
         `;
 
-        // الآن بعد تحديد الأزرار و الـ classes، نضيف الـ card
         resultContainer.appendChild(card);
     });
 }

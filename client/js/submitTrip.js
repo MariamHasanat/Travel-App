@@ -1,8 +1,14 @@
 function submitTripHandler(event) {
     event.preventDefault();
     const city = document.querySelector("input[placeholder='Enter Your Destination']").value;
-    const departureDate = document.querySelectorAll("#dateInput")[0].value;
-    const returnDate = document.querySelectorAll("#dateInput")[1].value;
+    const departureDate = document.querySelector("#departureDate").value;
+    const returnDate = document.querySelector("#returnDate").value;
+    
+    if (!departureDate || !returnDate) {
+        alert("Both dates are required.");
+        return;
+    }
+
     const tripDuration = calculateTripDuration(departureDate, returnDate);
     const trip = { city, date: departureDate, duration: tripDuration };
 
@@ -13,7 +19,15 @@ function submitTripHandler(event) {
 function calculateTripDuration(departureDate, returnDate) {
     const departure = new Date(departureDate);
     const returnD = new Date(returnDate);
-    return returnD - departure;
+    
+    const diffTime = returnD - departure;
+    const diffDays = diffTime / (1000 * 3600 * 24); 
+
+    if (diffDays === 0) {
+        return "Arrival is today"; 
+    }
+    
+    return diffDays + " day(s)";
 }
 
 function postTrip(url, trip) {

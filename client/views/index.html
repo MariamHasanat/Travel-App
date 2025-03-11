@@ -20,9 +20,9 @@
         <h1>Add New Trip</h1>
         <form>
             <input type="text" placeholder="Enter Your Destination">
-            <input type="text" id="dateInput" placeholder="When are you leaving?" onfocus="(this.type='date')"
+            <input type="date" id="departureDate" placeholder="When are you leaving?" onfocus="this.type='date'"
                 onblur="if(!this.value) this.type='text'">
-            <input type="text" id="dateInput" placeholder="When are you coming back?" onfocus="(this.type='date')"
+            <input type="date" id="returnDate" placeholder="When are you coming back?" onfocus="this.type='date'"
                 onblur="if(!this.value) this.type='text'">
             <div class="button-group flex-direction-row">
                 <button class="button-next" onclick="return Client.submitTripHandler(event)">Add Trip</button>
@@ -30,23 +30,25 @@
             </div>
         </form>
     </div>
+
     <div class="add-note container display-0">
         <h1>Add a Note</h1>
         <form>
             <label for="note">Note:</label>
             <textarea name="note" id="add-note" placeholder="Have any notes?"></textarea>
             <div class="button-group flex-direction-row">
-                <button type="button" class="button-next" onclick="return Client.submitNoteHandler(event)">Add Note</button>
+                <button type="button" class="button-next" onclick="return Client.submitNoteHandler(event)">Add
+                    Note</button>
                 <button type="button" class="button-next" onclick="return Client.cancel(event)">Cancel</button>
             </div>
         </form>
-    </div>    
+    </div>
     <div class="empty display-0">
         <img src="assets/empty-data.svg" alt="empty">
     </div>
     <div id="result-container">
     </div>
-   
+
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
