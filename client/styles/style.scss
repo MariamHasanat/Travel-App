@@ -72,7 +72,23 @@ body {
         transform: scale(1.05);
         background-color: $button-hover;
     }
+
+    @media (max-width: 1024px) {
+        font-size: 0.95rem;
+        padding: $number-14 $number-30;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 0.9rem;
+        padding: $number-12 $number-26;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 0.85rem;
+        padding: $number-8 $number-20;
+    }
 }
+
 
 .flex-direction-row {
     display: flex;
