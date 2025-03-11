@@ -18,14 +18,12 @@ import { addNote, submitNoteHandler, editNoteHandler } from './js/addNote';
 import { setTripDateRestrictions } from './js/dateRes';
 import { addTripBtn } from './js/addTripBtn';
 import { cancelAddNote } from './js/cancelAddNote';
+import { next } from './js/next';
 
 document.addEventListener("DOMContentLoaded", () => {
     setTripDateRestrictions();
 
-    // التحقق من وجود بيانات في localStorage
     const trips = JSON.parse(localStorage.getItem("tripData")) || [];
-    console.log(trips.length);
-    
 
     if (trips.length > 0) {
         updateUI();
@@ -37,9 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-document.getElementById("nextBtn").addEventListener("click", function () {
-    document.getElementById("greetings-card").style.display = "none";
-    document.getElementById("empty-container").style.display = "block";
-});
 
-export { addTripBtn, cancelAddNote, submitTripHandler, deleteTrip, updateUI, cancel, addNote, submitNoteHandler, editNoteHandler };
+
+export { addTripBtn, cancelAddNote, submitTripHandler, deleteTrip, updateUI, cancel, addNote, submitNoteHandler, editNoteHandler, setTripDateRestrictions, next };
