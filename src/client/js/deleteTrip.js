@@ -13,10 +13,10 @@ function deleteTrip(index) {
         return;
     }
 
-    trips.splice(index, 1); // حذف الرحلة من الأراي
-    localStorage.setItem('tripData', JSON.stringify(trips)); // تحديث localStorage
+    trips.splice(index, 1);
+    localStorage.setItem('tripData', JSON.stringify(trips)); 
 
-    Client.updateUI(); // إعادة تحميل الواجهة بعد الحذف
+    Client.updateUI();
 }
 
 export { deleteTrip };

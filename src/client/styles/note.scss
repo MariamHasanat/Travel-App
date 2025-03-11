@@ -1,12 +1,12 @@
 @use 'style' as style;
 
 .add-note.container {
-    position: fixed;  // تأكد من أن العنصر ثابت في مكانه
-    top: 50%;  // توسيطه عموديًا في منتصف الشاشة
-    left: 50%;  // توسيطه أفقيًا في منتصف الشاشة
-    transform: translate(-50%, -50%);  // لجعل العنصر في المنتصف تمامًا
-    width: 80%;  // عرض العنصر سيكون 80% من عرض الشاشة
-    max-width: 500px;  // حد أقصى للعرض
+    position: fixed;  
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);  
+    width: 80%;  
+    max-width: 500px;  
     padding: 20px;
     background-color: style.$white;
     border-radius: style.$number-20;

@@ -38,13 +38,13 @@ function updateUI() {
     if (!Array.isArray(dataArray) || dataArray.length === 0) {
         emptyState.style.display = 'none';
         resultContainer.style.display = 'flex';
-        resultContainer.innerHTML = ''; // تنظيف المحتوى قبل الإضافة
+        resultContainer.innerHTML = ''; 
     
         if (section.style.display !== 'none') {
             const emElement = document.createElement('img');
             emElement.src = 'assets/empty-data.svg';
             emElement.alt = 'empty-data image';
-            emElement.style.width = "200px"; // ضبط الحجم
+            emElement.style.width = "200px"; 
             emElement.style.height = "auto";
             
             resultContainer.appendChild(emElement);
