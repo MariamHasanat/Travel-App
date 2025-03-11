@@ -208,11 +208,8 @@ input {
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 16px;
-    }
-
     .card {
+        margin: 16px;
         height: 230px;
         max-width: 250px; // تقليل عرض الكارد على الشاشات الصغيرة
         min-width: 250px;
