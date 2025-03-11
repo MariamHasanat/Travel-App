@@ -1,12 +1,4 @@
-$cards-bg: rgba(255, 255, 255, 0.9);
-$button-color: #219EBC;
-$button-hover: #1d99b8;
-$text-button: #FFF;
-$border-button: #8ECAE6;
-$number-16: 16px;
-$number-32: 32px;
-$number-36: 36px;
-$number-40: 40px;
+@use'style' as style;
 
 section {
     box-sizing: border-box;
@@ -30,27 +22,27 @@ section {
 
         #addTripBtn {
 
-            color: $text-button;
+            color: style.$text-button;
             font-size: 1rem;
             font-style: normal;
             font-weight: 500;
-            line-height: $number-40;
+            line-height: style.$number-40;
 
             display: flex;
-            padding: $number-16 $number-36;
+            padding: style.$number-16 style.$number-36;
             justify-content: center;
             align-items: center;
 
-            border-radius: $number-32;
-            border: 1px solid $border-button;
-            background: $button-color;
+            border-radius: style.$number-32;
+            border: 1px solid style.$border-button;
+            background: style.$button-color;
 
             transition: transform 0.3s ease-in-out;
             line-height: 10px;
 
             &:hover {
                 transform: scale(1.05);
-                background-color: $button-hover;
+                background-color: style.$button-hover;
             }
         }
 
@@ -60,7 +52,7 @@ section {
         width: 80%;
         height: 100%;
         padding-left: 20px;
-        background-color: $cards-bg;
+        background-color: style.$cards-bg;
 
         div.flex-direction-row {
             justify-content: space-between;

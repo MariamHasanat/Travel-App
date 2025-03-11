@@ -6,7 +6,8 @@ import './assets/add-note-icon.svg';
 import './assets/edit-note.svg';
 import './assets/edit-note-disabled.svg';
 import './styles/style.scss';
-import './styles/section.scss'
+import './styles/section.scss';
+import './styles/models.scss';
 import { submitTripHandler } from './js/submitTrip';
 import { deleteTrip } from './js/deleteTrip';
 import { updateUI } from './js/updateUI';
@@ -26,11 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (trips.length > 0) {
         updateUI();
     } else {
-        // إخفاء كل شيء ما عدا greetings-card
         document.getElementById("greetings-card").style.display = "block";
         document.getElementById("empty-container").style.display = "none";
         document.getElementById("add-new-trip-card").style.display = "none";
-        document.getElementById("result-container").style.display = "none";
+        document.getElementById("section").style.display = "none";
     }
 });
 

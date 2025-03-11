@@ -91,6 +91,7 @@ function updateUI() {
             </div>
         `;
 
+        document.getElementById("section").style.display = "flex";
         resultContainer.appendChild(card);
     });
 }

@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <section>
+    <section id="section">
         <aside >
             <img id="logo" src="/assets/logo.svg" alt="logo">
             <button  id="addTripBtn"  onclick="return Client.addTripBtn(event)">Add New Trip</button>
@@ -21,11 +21,13 @@
     </section>
     <div id="greetings-card" class="greetings-card container text-center display-0">
         <div>
-            <h1>Welcome to <img src="assets/logo.svg" alt="logo" loading="lazy"></h1>
+            <h1>Welcome to&nbsp;<img id="logo-greet" src="assets/logo.svg" alt="logo" loading="lazy"></h1>
             <h2>Your Next Adventure Begins Now!</h2>
             <p>Smarter Trips, Better Journeys.</p>
         </div>
-        <button id="nextBtn" class="btn btn-primary button-next">Next</button>
+        <div class="flex-direction-row">
+            <button id="nextBtn" class="btn btn-primary button-next">Next</button>
+        </div>
     </div>
     <div id="add-new-trip-card" class="add-new-trip-card container display-0">
         <h1>Add New Trip</h1>
