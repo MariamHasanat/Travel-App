@@ -6,6 +6,7 @@ import './assets/add-note-icon.svg';
 import './assets/edit-note.svg';
 import './assets/edit-note-disabled.svg';
 import './styles/style.scss';
+import './styles/section.scss'
 import { submitTripHandler } from './js/submitTrip';
 import { deleteTrip } from './js/deleteTrip';
 import { updateUI } from './js/updateUI';
@@ -15,27 +16,28 @@ import { setTripDateRestrictions } from './js/dateRes';
 import { sortTrips } from './js/sortTrips';
 import { addTripBtn } from './js/addTripBtn';
 
+document.addEventListener("DOMContentLoaded", () => {
+    setTripDateRestrictions();
 
-document.getElementById('nextBtn').addEventListener('click', function () {
-    document.getElementById('greetings-card').style.display = 'none';
-    document.getElementById('empty-container').style.display = 'block';
+    // التحقق من وجود بيانات في localStorage
+    const trips = JSON.parse(localStorage.getItem("tripData")) || [];
+    console.log(trips.length);
+    
+
+    if (trips.length > 0) {
+        updateUI();
+    } else {
+        // إخفاء كل شيء ما عدا greetings-card
+        document.getElementById("greetings-card").style.display = "block";
+        document.getElementById("empty-container").style.display = "none";
+        document.getElementById("add-new-trip-card").style.display = "none";
+        document.getElementById("result-container").style.display = "none";
+    }
 });
 
-document.addEventListener("DOMContentLoaded",
-    () => {
-        setTripDateRestrictions();
-        document.getElementById('empty-container').style.display = 'none';
-        document.getElementById('add-new-trip-card').style.display = 'none';
-        document.getElementById('result-container').style.display = 'none';
-        document.querySelector.addEventListener("click", (event) => {
-            if (button.textContent.trim() === "Next") {
-                button.closest(".container").classList.add("display-0");
-                setTimeout(() => updateUI(), 100);
-            }
-        });
-    });
-
-
-
+document.getElementById("nextBtn").addEventListener("click", function () {
+    document.getElementById("greetings-card").style.display = "none";
+    document.getElementById("empty-container").style.display = "block";
+});
 
 export { addTripBtn, submitTripHandler, deleteTrip, updateUI, cancel, addNote, submitNoteHandler, editNoteHandler, sortTrips };

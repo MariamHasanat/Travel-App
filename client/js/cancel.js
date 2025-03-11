@@ -6,7 +6,7 @@ function cancel(event) {
         form.reset();
     }
 
-    event.target.closest(".container").classList.add("display-0");
+    event.target.closest(".container").style.display = "none";;
 }
 
 export { cancel };
