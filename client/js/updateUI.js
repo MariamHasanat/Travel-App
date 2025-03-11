@@ -79,7 +79,7 @@ function updateUI() {
                 </span>
             </div>
             <div class="buttons">
-                <button type="button" id="add-note-btn-${index}" onclick="return Client.editNoteHandler(${index})" class="${hasNotes ? 'display-0' : ''}">
+                <button type="button" id="add-note-btn-${index}" onclick="return Client.addNote(${index})" class="${hasNotes ? 'display-0' : ''}">
                     <img src="/assets/add-note-icon.svg" alt="add-note-icon">
                 </button>
                 <button type="button" onclick="return Client.editNoteHandler(${index})" class="${!hasNotes ? 'display-0' : ''}">
