@@ -10,6 +10,66 @@
     text-align: left;
     color: style.$text-color;
     box-sizing: border-box;
+    &.empty{
+        display: flex;
+  
+        #img-empty{
+            align-self: center;
+            justify-self: center;
+        }
+        width: 40%;
+        @media (max-width: 1024px) {
+            width: 60%;
+        }
+    
+        @media (max-width: 768px) {
+            width: 80%;
+        }
+    
+        @media (max-width: 480px) {
+            width: 100%;
+        }
+    }
+    div{
+        #addTripBtn {
+            color: style.$text-button;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: style.$number-40;
+
+            display: flex;
+            padding: style.$number-16 style.$number-36;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: style.$number-32;
+            border: 1px solid style.$border-button;
+            background: style.$button-color;
+
+            transition: transform 0.3s ease-in-out;
+            line-height: 10px;
+
+            &:hover {
+                transform: scale(1.05);
+                background-color: style.$button-hover;
+            }
+            @media (max-width: 1024px) {
+                font-size: 0.95rem;
+                padding: style.$number-14 style.$number-30;
+            }
+    
+            @media (max-width: 768px) {
+                font-size: 0.9rem;
+                padding: style.$number-12 style.$number-26;
+            }
+    
+            @media (max-width: 480px) {
+                font-size: 0.85rem;
+                padding: style.$number-8 style.$number-20;
+            }
+        }
+    }
 
     h1 {
         color: #000;

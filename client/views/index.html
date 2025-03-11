@@ -9,9 +9,9 @@
 
 <body>
     <section id="section">
-        <aside >
+        <aside>
             <img id="logo" src="/assets/logo.svg" alt="logo">
-            <button  id="addTripBtn"  onclick="return Client.addTripBtn(event)">Add New Trip</button>
+            <button id="addTripBtn" onclick="return Client.addTripBtn(event)">Add New Trip</button>
         </aside>
         <article>
             <h1>Travels Book</h1>
@@ -56,8 +56,12 @@
         </form>
     </div>
     <div class="empty container display-0" id="empty-container">
-        <button id="addTripBtn" onclick="return Client.addTripBtn(event)">Add New Trip</button>
-        <img src="assets/empty-data.svg" alt="empty">
+        <div id="img-empty">
+            <img src="assets/empty-data.svg" alt="empty">
+        </div>
+        <div class="flex-direction-row">
+            <button id="addTripBtn" onclick="return Client.addTripBtn(event)">Add New Trip</button>
+        </div>
     </div>
     <script>
         if ('serviceWorker' in navigator) {
