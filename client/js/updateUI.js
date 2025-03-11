@@ -1,29 +1,29 @@
 function formatDate(timestamp) {
     if (!timestamp) return null;
-    
+
     const date = new Date(timestamp);
-    const day = String(date.getDate()).padStart(2, '0'); 
-    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
-    
+
     return `${day}/${month}/${year}`;
 }
 
 function calculateDaysLeft(timestamp) {
     if (!timestamp) return null;
-    
+
     const tripDate = new Date(timestamp);
     const today = new Date();
-    
+
     today.setHours(0, 0, 0, 0);
-    
+
     if (tripDate.toDateString() === today.toDateString()) {
         return "Trip is today";
     }
 
-    const diff = tripDate - today; 
+    const diff = tripDate - today;
     const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    
+
     return daysLeft >= 0 ? daysLeft + ` day(s)` : "Trip has passed";
 }
 
@@ -31,20 +31,26 @@ function updateUI() {
     const storedData = localStorage.getItem('tripData');
     const emptyState = document.querySelector('.empty');
     const resultContainer = document.getElementById('result-container');
-
-    if (!storedData) {
-        emptyState.style.display = 'block';
-        resultContainer.style.display = 'none';
-        return;
-    }
-
+    const section = document.getElementById('section');
     const dataArray = JSON.parse(storedData);
 
     if (!Array.isArray(dataArray) || dataArray.length === 0) {
-        emptyState.style.display = 'block';
-        resultContainer.style.display = 'none';
-        return;
+        emptyState.style.display = 'none';
+        resultContainer.style.display = 'flex';
+        resultContainer.innerHTML = ''; // تنظيف المحتوى قبل الإضافة
+    
+        if (section.style.display !== 'none') {
+            const emElement = document.createElement('img');
+            emElement.src = 'assets/empty-data.svg';
+            emElement.alt = 'empty-data image';
+            emElement.style.width = "200px"; // ضبط الحجم
+            emElement.style.height = "auto";
+            
+            resultContainer.appendChild(emElement);
+            console.log("Image added:", emElement);
+        }
     }
+    
 
     emptyState.style.display = 'none';
     resultContainer.style.display = 'flex';
@@ -72,8 +78,8 @@ function updateUI() {
                 <h3>My Trip to: ${data.city}, ${data.country || 'Unknown Country'}</h3>
                 <p>Departing: ${formatDate(data.date) || 'No Data'}</p>
                 <p>Time Left: ${calculateDaysLeft(data.date) || 'No Data'} | Duration: ${data.duration}</p>
-                <p>Weather: ${data.forecast? `High: ${data.forecast.high_temp}°C | Low: ${data.forecast.low_temp}°C | ${data.forecast.weather.description || 'No Data'} &nbsp;<img class="weather-icon" src="https://www.weatherbit.io/static/img/icons/${data.forecast.weather.icon}.png" alt="Weather Icon">
-                </p>`: `No Weather Data Found</p>` }
+                <p>Weather: ${data.forecast ? `High: ${data.forecast.high_temp}°C | Low: ${data.forecast.low_temp}°C | ${data.forecast.weather.description || 'No Data'} &nbsp;<img class="weather-icon" src="https://www.weatherbit.io/static/img/icons/${data.forecast.weather.icon}.png" alt="Weather Icon">
+                </p>`: `No Weather Data Found</p>`}
                 <span class="notes">
                     ${data.notes ? `<p>Notes: <span class="note-item">📝 ${data.notes}</span></p>` : ''}
                 </span>

@@ -6,6 +6,13 @@ function deleteTrip(index) {
         return;
     }
 
+    const isConfirmed = confirm("Are you sure you want to delete this trip?");
+    
+    if (!isConfirmed) {
+        console.log("Trip deletion canceled.");
+        return;
+    }
+
     trips.splice(index, 1); // حذف الرحلة من الأراي
     localStorage.setItem('tripData', JSON.stringify(trips)); // تحديث localStorage
 

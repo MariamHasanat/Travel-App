@@ -4,8 +4,8 @@ function submitTripHandler(event) {
     const departureDate = document.querySelector("#departureDate").value;
     const returnDate = document.querySelector("#returnDate").value;
 
-    if (!departureDate || !returnDate) {
-        alert("Both dates are required.");
+    if (!departureDate || !returnDate || !city) {
+        alert("All fields are required.");
         return;
     }
 
