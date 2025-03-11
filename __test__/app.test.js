@@ -1,8 +1,8 @@
 const request = require('supertest');
-const app = require('../server/app');
+const app = require('../src/server/app');
 const axios = require('axios');
 
-// محاكاة axios
+
 jest.mock('axios');
 
 describe('POST /getData', () => {

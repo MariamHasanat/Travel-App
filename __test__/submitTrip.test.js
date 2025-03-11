@@ -1,4 +1,4 @@
-import { submitTripHandler, calculateTripDuration, postTrip } from '../client/js/submitTrip';
+import { submitTripHandler, calculateTripDuration, postTrip } from '../src/client/js/submitTrip';
 
 // Mock the functions
 jest.mock('../client/js/submitTrip.js', () => ({

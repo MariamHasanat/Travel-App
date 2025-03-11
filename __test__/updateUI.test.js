@@ -1,8 +1,8 @@
-import { formatDate, calculateDaysLeft } from '../client/js/updateUI'; // عدل المسار حسب الحاجة
+import { formatDate, calculateDaysLeft } from '../src/client/js/updateUI'; 
 
 describe('formatDate', () => {
     test('should format a valid timestamp correctly', () => {
-        expect(formatDate(1710096000000)).toBe('10/03/2024'); // مثال لتاريخ
+        expect(formatDate(1710096000000)).toBe('10/03/2024');
     });
 
     test('should return null if timestamp is missing', () => {

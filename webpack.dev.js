@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './client/index.js',
+    entry: './src/client/index.js',
     output: {
         libraryTarget: 'var',
         library: 'Client',
@@ -43,7 +43,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: "./client/views/index.html",
+            template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
         new CleanWebpackPlugin({

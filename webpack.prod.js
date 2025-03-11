@@ -5,7 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-    entry: './client/index.js',
+    entry: './src/client/index.js',
     devtool: 'source-map',
     mode: 'production',
     optimization: {
@@ -53,7 +53,7 @@ module.exports = {
             minRatio: 0.8,
         }),
         new HtmlWebPackPlugin({
-            template: "./client/views/index.html",
+            template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
         new WorkboxPlugin.GenerateSW({

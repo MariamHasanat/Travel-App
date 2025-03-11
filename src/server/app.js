@@ -8,7 +8,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Initialize the main project folder
-app.use(express.static('../dist'));
+app.use(express.static('../../dist'));
 
 const PORT = 8081;
 
