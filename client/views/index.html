@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="greetings-card container display-0">
+    <div class="greetings-card container">
         <div>
             <h1>Welcome to <img src="assets/logo.svg" alt="logo" loading="lazy"></h1>
             <h2>Your Next Adventure Begins Now!</h2>
@@ -26,11 +26,22 @@
                 onblur="if(!this.value) this.type='text'">
             <div class="button-group flex-direction-row">
                 <button class="button-next" onclick="return Client.submitTripHandler(event)">Add Trip</button>
-                <button class="button-next">Cancel</button>
+                <button class="button-next" onclick="return Client.cancel(event)">Cancel</button>
             </div>
         </form>
     </div>
-    <div class="empty">
+    <div class="add-note container display-0">
+        <h1>Add a New Note</h1>
+        <form>
+            <label for="note">Note:</label>
+            <textarea name="note" id="add-note" placeholder="Have any notes?"></textarea>
+            <div class="button-group flex-direction-row">
+                <button class="button-next" onclick="return Client.submitNoteHandler(event)">Add Note</button>
+                <button class="button-next" onclick="return Client.cancel(event)">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <div class="empty display-0">
         <img src="assets/empty-data.svg" alt="empty">
     </div>
     <div id="result-container">

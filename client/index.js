@@ -7,8 +7,20 @@ import './styles/style.scss';
 import { submitTripHandler } from './js/submitTrip';
 import { deleteTrip } from './js/deleteTrip';
 import { updateUI } from './js/updateUI';
+import { cancel } from './js/cancel';
 
-document.addEventListener("DOMContentLoaded", updateUI);
+document.addEventListener("DOMContentLoaded", () => {
+
+    document.querySelectorAll(".button-next").forEach(button => {
+        button.addEventListener("click", (event) => {
+            if (button.textContent.trim() === "Next") {
+                button.closest(".container").classList.add("display-0");
+                setTimeout(() => updateUI(), 100);
+            }
+        });
+    });
+
+});
 
 
-export { submitTripHandler, deleteTrip, updateUI };
+export { submitTripHandler, deleteTrip, updateUI, cancel };
