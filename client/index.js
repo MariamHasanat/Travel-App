@@ -13,7 +13,6 @@ import { updateUI } from './js/updateUI';
 import { cancel } from './js/cancel';
 import { addNote, submitNoteHandler, editNoteHandler } from './js/addNote';
 import { setTripDateRestrictions } from './js/dateRes';
-import { sortTrips } from './js/sortTrips';
 import { addTripBtn } from './js/addTripBtn';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -40,4 +39,4 @@ document.getElementById("nextBtn").addEventListener("click", function () {
     document.getElementById("empty-container").style.display = "block";
 });
 
-export { addTripBtn, submitTripHandler, deleteTrip, updateUI, cancel, addNote, submitNoteHandler, editNoteHandler, sortTrips };
+export { addTripBtn, submitTripHandler, deleteTrip, updateUI, cancel, addNote, submitNoteHandler, editNoteHandler };
