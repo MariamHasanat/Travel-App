@@ -40,7 +40,7 @@ app.post('/getData', async (req, res) => {
 
         console.log({ city, country: countryName, lat, lng, forecast, imageUrl });
 
-        res.json({ city, country: countryName, lat, lng, forecast, imageUrl, duration });
+        res.json({ city, date, country: countryName, lat, lng, forecast, imageUrl, duration });
     } catch (error) {
         res.status(500).json({ error: 'Error fetching data' });
     }

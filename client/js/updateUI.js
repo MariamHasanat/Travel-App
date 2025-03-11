@@ -1,3 +1,26 @@
+function formatDate(timestamp) {
+    if (!timestamp) return null;
+    
+    const date = new Date(timestamp);
+    const day = String(date.getDate()).padStart(2, '0'); 
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const year = date.getFullYear();
+    
+    return `${day}/${month}/${year}`;
+}
+
+function calculateDaysLeft(timestamp) {
+    if (!timestamp) return null;
+    
+    const tripDate = new Date(timestamp);
+    const today = new Date();
+    
+    const diff = tripDate - today; // الفرق بالميلي ثانية
+    const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24)); // تحويل إلى أيام
+    
+    return daysLeft >= 0 ? daysLeft : "Trip has passed";
+}
+
 function updateUI() {
     const storedData = localStorage.getItem('tripData');
     const emptyState = document.querySelector('.empty');
@@ -33,17 +56,18 @@ function updateUI() {
         card.classList.add('card');
 
         if (data.imageUrl) {
-            card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${data.imageUrl})`;
+            card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(${data.imageUrl})`;
             card.style.backgroundSize = 'cover';
             card.style.backgroundPosition = 'center';
         }
 
         card.innerHTML = `
             <div>
-                <h3>${data.city}, ${data.country || 'Unknown Country'}</h3>
-                <p>Weather: ${data.forecast.weather.description || 'No Data'}</p>
-                <p>Duration: ${durationInDays} day(s)</p>
-                
+                <h3>My Trip to: ${data.city}, ${data.country || 'Unknown Country'}</h3>
+                <p>Departing: ${formatDate(data.date) || 'No Data'}</p>
+                <p>Time Left: ${calculateDaysLeft(data.date) || 'No Data'} day(s) | Duration: ${durationInDays} day(s)</p>
+                <p>Weather: High: ${data.forecast.high_temp}°C | Low: ${data.forecast.low_temp}°C | ${data.forecast.weather.description || 'No Data'} &nbsp;<img class="weather-icon" src="https://www.weatherbit.io/static/img/icons/${data.forecast.weather.icon}.png" alt="Weather Icon">
+ </p>
                 <span class="notes">
                     ${data.notes ? `<p>Notes: <span class="note-item">📝 ${data.notes}</span></p>` : ''}
                 </span>

@@ -156,8 +156,8 @@ input {
 .card {
     flex: 1 1 calc(33.33% - #{$number-20}); // توزيع الكروت بالتساوي مع الفراغات
     min-width: 332px;
-    max-width: 332px;
-    height: 250px;
+    max-width: 336px;
+    height: 270px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -177,7 +177,7 @@ input {
 
     h3,
     p {
-        font-size: 1.2rem;
+        font-size: 1rem;
         line-height: 1.5;
         font-weight: 400;
         color: $white;
@@ -209,6 +209,14 @@ input {
         flex-wrap: wrap;
         gap: 5px;
     }
+
+    .weather-icon {
+        width: 30px; // حجم مناسب للأيقونة
+        height: 30px;
+        position: absolute;
+        margin: auto;
+
+    }
 }
 
 @media (max-width: 768px) {
@@ -217,13 +225,14 @@ input {
     }
 
     .card {
-        height: 250px;
+        height: 230px;
         max-width: 250px; // تقليل عرض الكارد على الشاشات الصغيرة
         min-width: 250px;
     }
 
     .card h3,
     .card p {
-        font-size: 1rem; // تقليل حجم الخط على الشاشات الصغيرة
+        font-size: 0.8rem; // تقليل حجم الخط على الشاشات الصغيرة
     }
+
 }
