@@ -4,13 +4,15 @@ import './assets/empty-data.svg';
 import './assets/delete-icon.svg';
 import './assets/add-note-icon.svg';
 import './assets/edit-note.svg';
-import './assets/server-error.svg'
+import './assets/server-error.svg';
+import './assets/tube-spinner.svg';
 import './styles/style.scss';
 import './styles/section.scss';
 import './styles/models.scss';
 import './styles/note.scss';
 import './styles/addNewTrip.scss';
-import './styles/serverErrorStyle.scss'
+import './styles/serverErrorStyle.scss';
+import './styles/loader.scss';
 import { returnBack } from './js/returnBack';
 import { submitTripHandler } from './js/submitTrip';
 import { deleteTrip } from './js/deleteTrip';

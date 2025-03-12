@@ -1,8 +1,21 @@
+const loaderContainer = document.createElement('div');
+loaderContainer.classList.add('loader-container');
+
+const loader = document.createElement('img');
+loader.src = '/assets/tube-spinner.svg';
+loader.alt = 'loader image';
+loader.classList.add('loader');
+
+loaderContainer.appendChild(loader);
+
+
 function submitTripHandler(event) {
     event.preventDefault();
     const city = document.querySelector("input[placeholder='Enter Your Destination']").value;
     const departureDate = document.querySelector("#departureDate").value;
     const returnDate = document.querySelector("#returnDate").value;
+
+
 
     if (!departureDate || !returnDate || !city) {
         alert("All fields are required.");
@@ -16,7 +29,9 @@ function submitTripHandler(event) {
     postTrip('http://localhost:8081/getData', trip);
 
     document.getElementById('add-new-trip-card').style.display = 'none';
-// clear the fields after submitting the data
+    document.body.appendChild(loaderContainer);
+
+    // clear the fields after submitting the data
     document.querySelector("input[placeholder='Enter Your Destination']").value = '';
     document.querySelector("#departureDate").value = '';
     document.querySelector("#returnDate").value = '';
@@ -46,12 +61,14 @@ function postTrip(url, trip) {
         .then(res => res.json())
         .then(data => {
             saveToLocalStorage(data);
+            document.body.removeChild(loaderContainer);
             Client.updateUI();
         })
         .catch(error => {
             console.log(error);
             const noResE = document.getElementById('no-res-container');
             noResE.classList.remove('display-0');
+            document.body.removeChild(loaderContainer);
             noResE.style.display = 'flex';
         });
 }
@@ -68,4 +85,4 @@ function saveToLocalStorage(newData) {
     localStorage.setItem('tripData', JSON.stringify(existingData));
 }
 
-export { submitTripHandler , calculateTripDuration, postTrip};
+export { submitTripHandler, calculateTripDuration, postTrip };
