@@ -1,4 +1,4 @@
-# Travel Data Fetcher
+# Travel Application 
 
 This is a simple application that fetches travel-related data from multiple APIs, including Geonames, Weatherbit, and Pixabay. The application receives a city, date, and duration as input, and in return, it provides the coordinates of the city, the weather forecast for the given date, and an image of the city.
 
