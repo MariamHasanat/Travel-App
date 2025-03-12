@@ -35,6 +35,33 @@ module.exports = {
 };
 ```
 
+## Running the Project Correctly  
+
+To ensure the project runs without issues, follow these steps:  
+
+1. **Install Dependencies**  
+   Make sure all dependencies are installed by running:  
+   ```sh
+   npm install
+   ```
+
+2. **Build the Project (Production Build)**  
+   Ensure the `dist` folder exists. If not, generate it by running:  
+   ```sh
+   npm run build-prod
+   ```
+
+3. **Start the Server**  
+   The server must be running before accessing the application:  
+   ```sh
+   npm start
+   ```
+
+4. **Verify the Server is Running on the Correct Port**  
+   Check that the server is running on the expected port, then open your browser and go to:  
+   ```
+   http://localhost:8081
+   ```
 
 ## Available Scripts:
 - `npm start`: Starts the server using `nodemon` and runs the server from `src/server/index.js`.
