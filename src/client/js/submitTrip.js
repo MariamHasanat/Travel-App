@@ -14,6 +14,7 @@ function submitTripHandler(event) {
 
 
     postTrip('http://localhost:8081/getData', trip);
+
     document.getElementById('add-new-trip-card').style.display = 'none';
 // clear the fields after submitting the data
     document.querySelector("input[placeholder='Enter Your Destination']").value = '';
@@ -47,7 +48,12 @@ function postTrip(url, trip) {
             saveToLocalStorage(data);
             Client.updateUI();
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+            console.log(error);
+            const noResE = document.getElementById('no-res-container');
+            noResE.classList.remove('display-0');
+            noResE.style.display = 'flex';
+        });
 }
 
 function saveToLocalStorage(newData) {

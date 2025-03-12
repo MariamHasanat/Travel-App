@@ -63,6 +63,14 @@
             <button id="addTripBtn" onclick="return Client.addTripBtn(event)">Add New Trip</button>
         </div>
     </div>
+    <div class="no-response container display-0" id="no-res-container">
+        
+            <img id="server-img" src="assets/server-error.svg" alt="server-error">
+        
+        <div class="flex-direction-row">
+            <button id="back-btn" onclick="return Client.returnBack(event)">Back</button>
+        </div>
+    </div>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {

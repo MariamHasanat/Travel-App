@@ -35,30 +35,29 @@ function updateUI() {
     const section = document.getElementById('section');
     const dataArray = JSON.parse(storedData);
 
-    if (!Array.isArray(dataArray) || dataArray.length === 0) {
-        emptyState.style.display = 'none';
-        resultContainer.style.display = 'flex';
-        resultContainer.innerHTML = ''; 
-    
-        if (section.style.display !== 'none') {
-            const emElement = document.createElement('img');
-            emElement.src = 'assets/empty-data.svg';
-            emElement.alt = 'empty-data image';
-            emElement.style.width = "200px"; 
-            emElement.style.height = "auto";
-            
-            resultContainer.appendChild(emElement);
-        }
-    }
-    
-
     emptyState.style.display = 'none';
     resultContainer.style.display = 'flex';
     resultContainer.innerHTML = '';
 
+
+    if (section.style.display !== 'none' && (!Array.isArray(dataArray) || dataArray.length === 0)) { // this in case of delete the last element
+        const emElement = document.createElement('img');
+        emElement.src = 'assets/empty-data.svg';
+        emElement.alt = 'empty-data image';
+        emElement.style.width = "200px";
+        emElement.style.height = "auto";
+        emElement.style.margin = "auto";
+
+        resultContainer.appendChild(emElement);
+        return;
+    }
+
+
     dataArray.forEach((data, index) => {
         if (!data) {
             console.error("Data is not defined for trip:", data);
+            emptyState.style.display = 'block';
+            section.style.display = 'none';
             return;
         }
 
@@ -68,7 +67,7 @@ function updateUI() {
         const hasNotes = data.notes?.trim().length > 0;
 
         if (data.imageUrl) {
-            card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(${data.imageUrl})`;
+            card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${data.imageUrl})`;
             card.style.backgroundSize = 'cover';
             card.style.backgroundPosition = 'center';
         }
@@ -102,4 +101,4 @@ function updateUI() {
     });
 }
 
-export { updateUI , formatDate, calculateDaysLeft};
+export { updateUI, formatDate, calculateDaysLeft };
