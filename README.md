@@ -7,6 +7,9 @@ This is a simple application that fetches travel-related data from multiple APIs
 - **Weatherbit API**: Used to fetch the weather forecast based on latitude and longitude.
 - **Pixabay API**: Used to fetch an image of the city based on the city name.
 
+## Project Setup
+This project requires Node.js v22.12.0
+
 ## Environment Setup:
 1. Clone the repository using this [link](https://github.com/MariamHasanat/Travel-App).
 2. Install dependencies by running:
@@ -89,6 +92,3 @@ The response will contain the following information:
 ## License:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Requirements  
-
-This project requires Node.js v22.12.0
