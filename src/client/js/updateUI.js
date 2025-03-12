@@ -70,6 +70,10 @@ function updateUI() {
             card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${data.imageUrl})`;
             card.style.backgroundSize = 'cover';
             card.style.backgroundPosition = 'center';
+        }else{
+            card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))`;
+            card.style.backgroundColor = '#219EBC';
+            card.style.backgroundPosition = 'center';
         }
 
         card.innerHTML = `
