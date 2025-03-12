@@ -57,10 +57,38 @@ The response will contain the following information:
 - A link to an image of the city.
 
 ## Dependencies:
-- Express.js
-- Axios
-- CORS
-- Body-Parser
+- **Express.js**: A fast, unopinionated, minimalist web framework for Node.js.
+- **Axios**: A promise-based HTTP client for the browser and Node.js to make API requests.
+- **CORS**: A package to enable Cross-Origin Resource Sharing, helping to allow or restrict resources on your web server.
+- **Body-Parser**: Middleware for parsing incoming request bodies in a middleware before your handlers, available under the `req.body` property.
+- **Nodemon**: A utility that monitors for file changes in your Node.js application and automatically restarts the server.
+
+## Development Dependencies:
+- **@babel/core**: Babel compiler core functionality for transpiling JavaScript to a backward-compatible version.
+- **@babel/plugin-transform-runtime**: Optimizes your compiled code by reusing Babel's helper functions.
+- **@babel/preset-env**: Babel preset for compiling JavaScript based on your targeted environments.
+- **Babel-Loader**: A webpack loader for Babel, enabling you to transpile files using Babel.
+- **Clean-Webpack-Plugin**: A plugin for webpack to clean the output directory before each build.
+- **Compression-Webpack-Plugin**: Webpack plugin for compression (e.g., Gzip) of your assets to reduce their size.
+- **Copy-Webpack-Plugin**: A plugin to copy individual files or entire directories to the build folder.
+- **CSS-Loader**: A webpack loader for handling CSS files and resolving dependencies within CSS files.
+- **File-Loader**: A webpack loader for handling file imports (e.g., images or fonts) and copying them to the output directory.
+- **HTML-Webpack-Plugin**: A plugin to simplify the creation of HTML files that include references to your webpack bundles.
+- **Jest**: A testing framework for JavaScript, often used for unit testing and integration testing.
+- **Jest-Environment-JSDOM**: Jest environment for simulating a browser environment in Node.js, used by Jest for DOM testing.
+- **Sass**: A preprocessor scripting language that is interpreted or compiled into CSS.
+- **Sass-Loader**: A webpack loader that compiles SCSS/SASS files into CSS.
+- **Style-Loader**: A webpack loader that injects CSS into the DOM by adding a `<style>` tag.
+- **Supertest**: A testing library for HTTP assertions, used to test API endpoints.
+- **Terser-Webpack-Plugin**: A webpack plugin for minifying JavaScript files using the Terser JavaScript minifier.
+- **Webpack**: A module bundler for JavaScript applications, used to bundle resources like JavaScript, CSS, and images.
+- **Webpack-CLI**: Command-line interface for webpack, providing useful commands for bundling and building projects.
+- **Webpack-Dev-Server**: A development server that provides live reloading and works seamlessly with webpack.
+- **Workbox-Webpack-Plugin**: A plugin to integrate service workers with webpack for building progressive web apps (PWAs).
 
 ## License:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Requirements  
+
+This project requires Node.js v22.12.0

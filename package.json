@@ -61,5 +61,8 @@
   },
   "jest": {
     "testEnvironment": "jest-environment-jsdom"
+  },
+  "engines": {
+    "node": "22.12.0"
   }
 }
