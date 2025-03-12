@@ -145,10 +145,10 @@ describe('submitTripHandler', () => {
 });
 
 describe('calculateTripDuration', () => {
-    it('should return "Arrival is today" if the return date is the same as the departure date', () => {
-        calculateTripDuration.mockReturnValue('Arrival is today');
+    it('should return "Arrival in the same day" if the return date is the same as the departure date', () => {
+        calculateTripDuration.mockReturnValue('Arrival in the same day');
         const duration = calculateTripDuration('2025-05-10', '2025-05-10');
-        expect(duration).toBe('Arrival is today');
+        expect(duration).toBe('Arrival in the same day');
     });
 
     it('should return the correct number of days if return date is after departure date', () => {

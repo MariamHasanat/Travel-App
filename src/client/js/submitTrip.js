@@ -46,7 +46,7 @@ function calculateTripDuration(departureDate, returnDate) {
     const diffDays = diffTime / (1000 * 3600 * 24);
 
     if (diffDays === 0) {
-        return "Arrival is today";
+        return "Arrival in the same day";
     }
 
     return diffDays + " day(s)";
